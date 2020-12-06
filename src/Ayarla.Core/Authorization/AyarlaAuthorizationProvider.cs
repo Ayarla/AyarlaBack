@@ -18,5 +18,5 @@ namespace Ayarla.Authorization
         {
             return new LocalizableString(name, AyarlaConsts.LocalizationSourceName);
         }
-    }
+    }//commit2 deneme
 }
