@@ -22,7 +22,7 @@ namespace Ayarla.Configuration
                 _ => BuildConfiguration(path, environmentName, addUserSecrets)
             );
         }
-
+        //semih deneme
         private static IConfigurationRoot BuildConfiguration(string path, string environmentName = null, bool addUserSecrets = false)
         {
             var builder = new ConfigurationBuilder()
