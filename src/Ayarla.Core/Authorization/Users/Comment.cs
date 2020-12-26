@@ -10,11 +10,11 @@ namespace Ayarla.Authorization.Users
     {
         public int Id { get; set; }
 
-        public int UserId { get; set; }
+        public int userId { get; set; }
 
         public string Comment { get; set; }
 
-        public int AccountId { get; set; }
+        public int accountId { get; set; }
 
         public int Stars { get; set; }
     }

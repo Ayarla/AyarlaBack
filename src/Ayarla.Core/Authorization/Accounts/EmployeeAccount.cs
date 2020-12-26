@@ -10,11 +10,11 @@ namespace Ayarla.Authorization.Accounts
     {
         public int Id { get; set; }
 
-        public int EmployeeId { get; set; }
+        public int employeeId { get; set; }
 
-        public int AcoountId { get; set; }
+        public int acoountId { get; set; }
 
-        public int AuthorizationId { get; set; }
+        public int authorizationId { get; set; }
 
     }
 }

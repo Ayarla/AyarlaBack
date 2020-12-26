@@ -16,7 +16,7 @@ namespace Ayarla.Authorization.Accounts
 
         public int Time { get; set; }
 
-        public int TypeId { get; set; }
+        public int typeId { get; set; }
 
 
 

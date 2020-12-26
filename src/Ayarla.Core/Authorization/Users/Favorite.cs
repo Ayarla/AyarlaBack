@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Users
 {
-    public class Favorites
+    public class Favorite
     {
         public int Id { get; set; }
 
-        public int AccountId { get; set; }
+        public int accountId { get; set; }
 
-        public int UserId { get; set; }
+        public int userId { get; set; }
     }
 }

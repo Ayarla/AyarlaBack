@@ -20,9 +20,9 @@ namespace Ayarla.Authorization.Users
 
         public string Email { get; set; }
 
-        public int FavoritesId { get; set; }
+        public int favoriteId { get; set; }
 
-        public int AppoinmentId { get; set; }
+        public int appoinmentId { get; set; }
 
 
     }

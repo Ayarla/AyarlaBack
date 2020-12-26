@@ -27,7 +27,7 @@ namespace Ayarla.Authorization.Accounts
 
         public object BusinessImage { get; set; }
 
-        public int BusinessTypeId { get; set; }
+        public int businessTypeId { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -37,7 +37,7 @@ namespace Ayarla.Authorization.Accounts
 
         public int OpenCloseTime { get; set; }
 
-        public int CommentId { get; set; }
+        public int commentId { get; set; }
 
         public string Location { get; set; }
 
