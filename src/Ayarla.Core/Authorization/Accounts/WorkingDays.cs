@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Domain.AccountModels
+namespace Ayarla.Authorization.Accounts
 {
-    public class EmployeeAvailability
+    public class WorkingDays
     {
         public int Id { get; set; }
 
-        public string Availability { get; set; }
+        public string Days { get; set; }
+
     }
 }

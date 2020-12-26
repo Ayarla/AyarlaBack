@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Domain.AccountModels
-{
+namespace Ayarla.Authorization.Accounts
+{ 
     public class Employee
     {
         public int Id { get; set; }

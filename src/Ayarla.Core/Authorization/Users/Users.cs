@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Models
+namespace Ayarla.Authorization.Users
 {
-    public class Users 
+    public class Users
     {
         public int Id { get; set; }
 

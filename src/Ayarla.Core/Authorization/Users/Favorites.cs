@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Domain.AccountModels
+namespace Ayarla.Authorization.Users
 {
-    public class Authorization
+    public class Favorites
     {
-
         public int Id { get; set; }
 
-        public string Authority { get; set; }
+        public int AccountId { get; set; }
 
-
+        public int UserId { get; set; }
     }
 }

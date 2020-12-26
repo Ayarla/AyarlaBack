@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Domain.AccountModels
+namespace Ayarla.Authorization.Accounts
 {
-    public class BusinessType
+    public class Authorization
     {
 
         public int Id { get; set; }
 
-        public string Type { get; set; }
+        public string Authority { get; set; }
+
 
     }
 }

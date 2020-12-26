@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Domain.AccountModels
+namespace Ayarla.Authorization.Accounts
 {
     public class Account
     {
