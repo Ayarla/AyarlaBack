@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Users
 {
-    public class Favorite
+    public class AyarlaComment : FullAuditedEntity<Guid>
     {
         public int Id { get; set; }
 
+        public int userId { get; set; }
+
+        public string Comment { get; set; }
+
         public int accountId { get; set; }
 
-        public int userId { get; set; }
+        public int Stars { get; set; }
     }
 }

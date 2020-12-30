@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class EmployeeAccount
+    public class AyarlaEmployeeAccount : FullAuditedEntity<Guid>
     {
         public int Id { get; set; }
 
@@ -15,6 +16,5 @@ namespace Ayarla.Authorization.Accounts
         public int acoountId { get; set; }
 
         public int authorizationId { get; set; }
-
     }
 }

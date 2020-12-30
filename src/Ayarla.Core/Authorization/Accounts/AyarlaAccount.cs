@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class Account
+    public class AyarlaAccount : FullAuditedEntity<Guid>
     {
-
         public int Id { get; set; }
 
         public string Phone1 { get; set; }
@@ -25,7 +25,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string BusinessName { get; set; }
 
-        public object BusinessImage { get; set; }
+        public string BusinessImage { get; set; }
 
         public int businessTypeId { get; set; }
 
@@ -42,8 +42,5 @@ namespace Ayarla.Authorization.Accounts
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
-
-
-
     }
 }
