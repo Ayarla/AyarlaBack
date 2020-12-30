@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Abp.Domain.Entities.Auditing;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
-{ 
-    public class Employee
+{
+    public class AyarlaEmployee : FullAuditedEntity<Guid>
     {
         public int Id { get; set; }
 
@@ -20,7 +21,7 @@ namespace Ayarla.Authorization.Accounts
 
         public int availabilityId { get; set; }
 
-        public object EmployeeImage { get; set; }
+        public string EmployeeImage { get; set; }
 
         public int WorkingDays { get; set; }
 
@@ -37,11 +38,5 @@ namespace Ayarla.Authorization.Accounts
         public int accountId { get; set; }
 
         public int appoinmentId { get; set; }
-
-
-
-
-
-
     }
 }
