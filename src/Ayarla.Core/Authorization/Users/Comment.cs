@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Users
 {
-    public class AyarlaComment : FullAuditedEntity<Guid>
+    public class Comment : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
-        public int userId { get; set; }
+        public int UserId { get; set; }
 
-        public string Comment { get; set; }
+        public string UserComment { get; set; }
 
-        public int accountId { get; set; }
+        public int AccountId { get; set; }
 
         public int Stars { get; set; }
     }

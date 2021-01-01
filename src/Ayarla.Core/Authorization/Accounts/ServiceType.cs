@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class AyarlaServiceType : FullAuditedEntity<Guid>
+    public class ServiceType : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
         public string Type { get; set; }
     }

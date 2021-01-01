@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class AyarlaEmployeeAvailability : FullAuditedEntity<Guid>
+    public class EmployeeAccount : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
-        public string Availability { get; set; }
+        public int EmployeeId { get; set; }
+
+        public int AccountId { get; set; }
+
     }
 }

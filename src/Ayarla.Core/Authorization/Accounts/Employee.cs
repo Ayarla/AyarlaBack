@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class AyarlaEmployee : FullAuditedEntity<Guid>
+    public class Employee : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
         public string FirstName { get; set; }
 
@@ -19,7 +19,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string Gsm { get; set; }
 
-        public int availabilityId { get; set; }
+        public int AvailabilityId { get; set; }
 
         public string EmployeeImage { get; set; }
 
@@ -27,16 +27,16 @@ namespace Ayarla.Authorization.Accounts
 
         public int LaunchTime { get; set; }
 
-        public int serviceId { get; set; }
+        public int ServiceId { get; set; }
 
         public string Notes { get; set; }
 
-        public int dateId { get; set; }
+        public int DateId { get; set; }
 
         public string EmployeeSex { get; set; }
 
-        public int accountId { get; set; }
+        public int AccountId { get; set; }
 
-        public int appoinmentId { get; set; }
+        public int AppoinmentId { get; set; }
     }
 }

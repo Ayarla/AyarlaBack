@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class AyarlaEmployeeService : FullAuditedEntity<Guid>
+    public class EmployeeService : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
         public string Service { get; set; }
 
@@ -17,6 +17,6 @@ namespace Ayarla.Authorization.Accounts
 
         public int Time { get; set; }
 
-        public int typeId { get; set; }
+        public int TypeId { get; set; }
     }
 }

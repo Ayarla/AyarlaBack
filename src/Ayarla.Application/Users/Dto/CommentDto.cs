@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Ayarla.AyarlaUsersService
 {
-    [AutoMapFrom(typeof(AyarlaComment))]
-    public class AyarlaCommentDto
+    [AutoMapFrom(typeof(Comment))]
+    public class CommentDto
     {
-        public int userId { get; set; }
+        public int UserId { get; set; }
         public string Comment { get; set; }
-        public int accountId { get; set; }
+        public int AccountId { get; set; }
         public int Stars { get; set; }
     }
 }
