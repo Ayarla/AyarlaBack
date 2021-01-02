@@ -10,19 +10,17 @@ namespace Ayarla.EntityFrameworkCore
     public class AyarlaDbContext : AbpZeroDbContext<Tenant, Role, User, AyarlaDbContext>
     {
         /* Define a DbSet for each entity of the application */
-        public DbSet<Comment> AyarlaComments { get; set; }
-        public DbSet<Favorite> AyarlaFavorites { get; set; }
-        public DbSet<AyarlaUsers> AyarlaUsers { get; set; }
-        public DbSet<Account> AyarlaAccounts { get; set; }
-        public DbSet<Appoinment> AyarlaAppoinments { get; set; }
-        public DbSet<AyarlaAuthorization> AyarlaAuthorizations { get; set; }
-        public DbSet<BusinessType> AyarlaBusinessTypes { get; set; }
-        public DbSet<Employee> AyarlaEmployees { get; set; }
-        public DbSet<EmployeeAccount> AyarlaEmployeeAccounts { get; set; }
-        public DbSet<EmployeeAvailability> AyarlaEmployeeAvailabilities { get; set; }
-        public DbSet<EmployeeService> AyarlaEmployeeServices { get; set; }
-        public DbSet<ServiceType> AyarlaServiceTypes { get; set; }
-        public DbSet<WorkingDay> AyarlaWorkingDays { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Appoinment> Appoinments { get; set; }
+        public DbSet<BusinessType> BusinessTypes { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeAccount> EmployeeAccounts { get; set; }
+        public DbSet<EmployeeAvailability> EmployeeAvailabilities { get; set; }
+        public DbSet<EmployeeService> EmployeeServices { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<WorkingDay> WorkingDays { get; set; }
         public AyarlaDbContext(DbContextOptions<AyarlaDbContext> options)
             : base(options)
         {

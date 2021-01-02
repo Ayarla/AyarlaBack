@@ -1,12 +1,14 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Users
 {
+    
     public class Comment : FullAuditedEntity<Guid>
     {
         
@@ -17,6 +19,6 @@ namespace Ayarla.Authorization.Users
 
         public int AccountId { get; set; }
 
-        public int Stars { get; set; }
+        public int Rating { get; set; }
     }
 }

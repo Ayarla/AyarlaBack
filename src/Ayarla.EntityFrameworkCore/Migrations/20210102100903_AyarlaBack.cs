@@ -7,12 +7,25 @@ namespace Ayarla.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+                name: "AppoinmentId",
+                table: "AbpUsers",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
+                name: "FavoriteId",
+                table: "AbpUsers",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.CreateTable(
-                name: "AyarlaAccounts",
+                name: "Accounts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Phone1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -21,12 +34,12 @@ namespace Ayarla.Migrations
                     OpenAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BusinessName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BusinessImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    businessTypeId = table.Column<int>(type: "int", nullable: false),
+                    BusinessTypeId = table.Column<int>(type: "int", nullable: false),
                     AccountNotes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     District = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OpenCloseTime = table.Column<int>(type: "int", nullable: false),
-                    commentId = table.Column<int>(type: "int", nullable: false),
+                    CommentId = table.Column<int>(type: "int", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TimePeriod = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -39,18 +52,17 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaAccounts", x => x.Id);
+                    table.PrimaryKey("PK_Accounts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaAppoinments",
+                name: "Appoinments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    serviceId = table.Column<int>(type: "int", nullable: false),
-                    employeeId = table.Column<int>(type: "int", nullable: false),
-                    userId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     Day = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Time = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -63,35 +75,14 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaAppoinments", x => x.Id);
+                    table.PrimaryKey("PK_Appoinments", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaAuthorizations",
+                name: "BusinessTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Authority = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
-                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
-                    DeletionTime = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AyarlaAuthorizations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AyarlaBusinessTypes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -103,19 +94,19 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaBusinessTypes", x => x.Id);
+                    table.PrimaryKey("PK_BusinessTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaComments",
+                name: "Comments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    userId = table.Column<int>(type: "int", nullable: false),
-                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accountId = table.Column<int>(type: "int", nullable: false),
-                    Stars = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserComment = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    UserId1 = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -126,18 +117,22 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaComments", x => x.Id);
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_AbpUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaEmployeeAccounts",
+                name: "EmployeeAccounts",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    employeeId = table.Column<int>(type: "int", nullable: false),
-                    acoountId = table.Column<int>(type: "int", nullable: false),
-                    authorizationId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -148,16 +143,15 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaEmployeeAccounts", x => x.Id);
+                    table.PrimaryKey("PK_EmployeeAccounts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaEmployeeAvailabilities",
+                name: "EmployeeAvailabilities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Availability = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Availability = table.Column<bool>(type: "bit", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -168,29 +162,28 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaEmployeeAvailabilities", x => x.Id);
+                    table.PrimaryKey("PK_EmployeeAvailabilities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaEmployees",
+                name: "Employees",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gsm = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    availabilityId = table.Column<int>(type: "int", nullable: false),
+                    AvailabilityId = table.Column<int>(type: "int", nullable: false),
                     EmployeeImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     WorkingDays = table.Column<int>(type: "int", nullable: false),
                     LaunchTime = table.Column<int>(type: "int", nullable: false),
-                    serviceId = table.Column<int>(type: "int", nullable: false),
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
                     Notes = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    dateId = table.Column<int>(type: "int", nullable: false),
+                    DateId = table.Column<int>(type: "int", nullable: false),
                     EmployeeSex = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    accountId = table.Column<int>(type: "int", nullable: false),
-                    appoinmentId = table.Column<int>(type: "int", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    AppoinmentId = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -201,19 +194,18 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaEmployees", x => x.Id);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaEmployeeServices",
+                name: "EmployeeServices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Service = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<int>(type: "int", nullable: false),
                     Time = table.Column<int>(type: "int", nullable: false),
-                    typeId = table.Column<int>(type: "int", nullable: false),
+                    TypeId = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -224,17 +216,17 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaEmployeeServices", x => x.Id);
+                    table.PrimaryKey("PK_EmployeeServices", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaFavorites",
+                name: "Favorites",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    accountId = table.Column<int>(type: "int", nullable: false),
-                    userId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AccountId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserId1 = table.Column<long>(type: "bigint", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
                     LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -245,15 +237,20 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaFavorites", x => x.Id);
+                    table.PrimaryKey("PK_Favorites", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Favorites_AbpUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AbpUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaServiceTypes",
+                name: "ServiceTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -265,41 +262,14 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaServiceTypes", x => x.Id);
+                    table.PrimaryKey("PK_ServiceTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AyarlaUsers",
+                name: "WorkingDays",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Gsm = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    favoriteId = table.Column<int>(type: "int", nullable: false),
-                    appoinmentId = table.Column<int>(type: "int", nullable: false),
-                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
-                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifierUserId = table.Column<long>(type: "bigint", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeleterUserId = table.Column<long>(type: "bigint", nullable: true),
-                    DeletionTime = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AyarlaUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AyarlaWorkingDays",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Days = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatorUserId = table.Column<long>(type: "bigint", nullable: true),
@@ -311,50 +281,62 @@ namespace Ayarla.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AyarlaWorkingDays", x => x.Id);
+                    table.PrimaryKey("PK_WorkingDays", x => x.Id);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_UserId1",
+                table: "Comments",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Favorites_UserId1",
+                table: "Favorites",
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AyarlaAccounts");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "AyarlaAppoinments");
+                name: "Appoinments");
 
             migrationBuilder.DropTable(
-                name: "AyarlaAuthorizations");
+                name: "BusinessTypes");
 
             migrationBuilder.DropTable(
-                name: "AyarlaBusinessTypes");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "AyarlaComments");
+                name: "EmployeeAccounts");
 
             migrationBuilder.DropTable(
-                name: "AyarlaEmployeeAccounts");
+                name: "EmployeeAvailabilities");
 
             migrationBuilder.DropTable(
-                name: "AyarlaEmployeeAvailabilities");
+                name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "AyarlaEmployees");
+                name: "EmployeeServices");
 
             migrationBuilder.DropTable(
-                name: "AyarlaEmployeeServices");
+                name: "Favorites");
 
             migrationBuilder.DropTable(
-                name: "AyarlaFavorites");
+                name: "ServiceTypes");
 
             migrationBuilder.DropTable(
-                name: "AyarlaServiceTypes");
+                name: "WorkingDays");
 
-            migrationBuilder.DropTable(
-                name: "AyarlaUsers");
+            migrationBuilder.DropColumn(
+                name: "AppoinmentId",
+                table: "AbpUsers");
 
-            migrationBuilder.DropTable(
-                name: "AyarlaWorkingDays");
+            migrationBuilder.DropColumn(
+                name: "FavoriteId",
+                table: "AbpUsers");
         }
     }
 }

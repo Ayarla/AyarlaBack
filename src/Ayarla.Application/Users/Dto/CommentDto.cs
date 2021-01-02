@@ -14,6 +14,6 @@ namespace Ayarla.AyarlaUsersService
         public int UserId { get; set; }
         public string Comment { get; set; }
         public int AccountId { get; set; }
-        public int Stars { get; set; }
+        public int Rating { get; set; }
     }
 }
