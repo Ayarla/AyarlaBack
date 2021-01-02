@@ -1,16 +1,18 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    public class AyarlaAuthorization : FullAuditedEntity<Guid>
+    
+    public class EmployeeAvailability : FullAuditedEntity<Guid>
     {
-        public int Id { get; set; }
+        
 
-        public string Authority { get; set; }
+        public Boolean Availability { get; set; }
     }
 }

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Ayarla.AyarlaUsersService
 {
-    [AutoMapFrom(typeof(AyarlaFavorite))]
-    public class AyarlaFavoriteDto : FullAuditedEntityDto<Guid>
+    [AutoMapFrom(typeof(Favorite))]
+    public class FavoriteDto : FullAuditedEntityDto<Guid>
     {
-        public int accountId { get; set; }
-        public int userId { get; set; }
+        public int AccountId { get; set; }
+        public int UserId { get; set; }
 
     }
 }
