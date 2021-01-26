@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using Ayarla.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -44,5 +45,6 @@ namespace Ayarla.Authorization.Accounts
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
+      
     }
 }
