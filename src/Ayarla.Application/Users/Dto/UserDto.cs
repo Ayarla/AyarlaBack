@@ -5,6 +5,7 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Users;
+using Ayarla.AyarlaUsersService;
 
 namespace Ayarla.Users.Dto
 {
@@ -39,12 +40,12 @@ namespace Ayarla.Users.Dto
         public string[] RoleNames { get; set; }
 
         public string Password { get; set; }
-        public int FavoriteId { get; set; }
-        public int AppoinmentId { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<CommentDto> Comments { get; set; }
 
-        public ICollection<Favorite> Favorites { get; set; }
+        public ICollection<FavoriteDto> Favorites { get; set; }
+
+        public ICollection<UserAppoinmentDto> Appoinments { get; set; }
 
     }
 }
