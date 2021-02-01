@@ -11,8 +11,6 @@ namespace Ayarla.Authorization.Accounts
     
     public class ServiceType : FullAuditedEntity<Guid>
     {
-        
-
         public string Type { get; set; }
     }
 }
