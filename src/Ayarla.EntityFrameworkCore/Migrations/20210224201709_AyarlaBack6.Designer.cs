@@ -4,14 +4,16 @@ using Ayarla.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ayarla.Migrations
 {
     [DbContext(typeof(AyarlaDbContext))]
-    partial class AyarlaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210224201709_AyarlaBack6")]
+    partial class AyarlaBack6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1741,50 +1743,6 @@ namespace Ayarla.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ServiceTypes");
-                });
-
-            modelBuilder.Entity("Ayarla.Authorization.Accounts.WorkTime", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("AcountId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("CreatorUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("DayOfTheWeek")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("DeleterUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<long?>("LastModifierUserId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("WorkEndTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WorkStartTime")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkTimes");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Accounts.WorkingDay", b =>

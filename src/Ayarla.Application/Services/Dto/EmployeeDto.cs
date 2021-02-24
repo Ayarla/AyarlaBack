@@ -12,6 +12,7 @@ namespace Ayarla.Services.Dto
     [AutoMapFrom(typeof(Employee))]
     public class EmployeeDto : FullAuditedEntityDto<Guid>
     {
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -22,11 +23,13 @@ namespace Ayarla.Services.Dto
 
         public string EmployeeImage { get; set; }
 
-        public int LaunchTime { get; set; }
-
         public string Notes { get; set; }
 
-        public string EmployeeSex { get; set; }
+        public enum Gender
+        {
+            Female = 1,
+            Male = 2,
+        }
 
         public ICollection<EmployeeAccountDto> EmployeeAccounts { get; set; }
 
@@ -39,6 +42,8 @@ namespace Ayarla.Services.Dto
         public ICollection<ServiceTypeDto> ServiceTypes { get; set; }
 
         public ICollection<WorkingDayDto> WorkingDays { get; set; }
+
+        public ICollection<WorkTimeDto> WorkTimes { get; set; }
 
     }
 }

@@ -27,18 +27,22 @@ namespace Ayarla.Authorization.Accounts
 
         public int WorkingDays { get; set; }
 
-        public int LaunchTime { get; set; }
-
         public int ServiceId { get; set; }
 
         public string Notes { get; set; }
 
         public int DateId { get; set; }
 
-        public string EmployeeSex { get; set; }
+        public enum Gender
+        {
+            Female = 1,
+            Male = 2,
+        }
 
         public int AccountId { get; set; }
 
         public int AppoinmentId { get; set; }
+
+        public int WorkTimeId { get; set; }
     }
 }

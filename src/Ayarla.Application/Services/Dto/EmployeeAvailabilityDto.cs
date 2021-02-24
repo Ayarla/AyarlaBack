@@ -12,6 +12,6 @@ namespace Ayarla.Services.Dto
     [AutoMapFrom(typeof(EmployeeAvailability))]
     public class EmployeeAvailabilityDto : FullAuditedEntityDto<Guid>
     {
-        public Boolean Availability { get; set; }
+        public bool Availability { get; set; }
     }
 }

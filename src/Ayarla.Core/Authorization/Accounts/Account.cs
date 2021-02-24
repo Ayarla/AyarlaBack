@@ -22,27 +22,29 @@ namespace Ayarla.Authorization.Accounts
 
         public string Password { get; set; }
 
-        public string OpenAddress { get; set; }
+        public string Address { get { return AddressDetail + "," + District + "/" + City; } }
 
-        public string BusinessName { get; set; }
+        public string AccountName { get; set; }
 
-        public string BusinessImage { get; set; }
+        public string AccountImage { get; set; }
 
-        public int BusinessTypeId { get; set; }
+        public int AccountTypeId { get; set; }
 
         public string AccountNotes { get; set; }
+
+        public string AddressDetail { get; set; }
 
         public string District { get; set; }
 
         public string City { get; set; }
 
-        public int OpenCloseTime { get; set; }
-
         public int CommentId { get; set; }
+
+        public int OpenCloseTimeId { get; set; }
 
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
-      
+    
     }
 }

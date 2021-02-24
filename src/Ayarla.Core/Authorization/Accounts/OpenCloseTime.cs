@@ -1,18 +1,20 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Accounts
 {
-    
-    public class EmployeeAccount : FullAuditedEntity<Guid>
+    public class OpenCloseTime : FullAuditedEntity<Guid>
     {
-        public int EmployeeId { get; set; }
-
         public int AccountId { get; set; }
+
+        public string DayOfTheWeek { get; set; }
+
+        public TimeSpan WorkStartTime { get; set; }
+
+        public TimeSpan WorkEndTime { get; set; }
     }
 }
