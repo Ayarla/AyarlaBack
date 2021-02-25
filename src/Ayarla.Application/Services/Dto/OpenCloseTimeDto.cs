@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Services.Dto
 {
-    [AutoMapFrom(typeof(WorkTime))]
-    public class WorkTimeDto : FullAuditedEntityDto<Guid>
+    [AutoMapFrom(typeof(OpenCloseTime))]
+    public class OpenCloseTimeDto : FullAuditedEntityDto<Guid>
     {
         public int AcountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 
-        public TimeSpan EmployeeWorkStartTime { get; set; }
+        public TimeSpan AccountWorkStartTime { get; set; }
 
-        public TimeSpan EmployeeWorkEndTime { get; set; }
+        public TimeSpan AccountWorkEndTime { get; set; }
     }
 }

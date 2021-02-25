@@ -13,8 +13,8 @@ namespace Ayarla.Authorization.Accounts
 
         public string DayOfTheWeek { get; set; }
 
-        public TimeSpan WorkStartTime { get; set; }
+        public TimeSpan AccountWorkStartTime { get; set; }
 
-        public TimeSpan WorkEndTime { get; set; }
+        public TimeSpan AccountWorkEndTime { get; set; }
     }
 }
