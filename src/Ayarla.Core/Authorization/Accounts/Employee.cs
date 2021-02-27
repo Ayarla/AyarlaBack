@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
+using Ayarla.Shared.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -33,11 +34,7 @@ namespace Ayarla.Authorization.Accounts
 
         public int DateId { get; set; }
 
-        public enum Gender
-        {
-            Female = 1,
-            Male = 2,
-        }
+        public Gender Gender { get; set; }
 
         public int AccountId { get; set; }
 

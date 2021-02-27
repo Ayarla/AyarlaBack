@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
+using Ayarla.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,11 +26,7 @@ namespace Ayarla.Services.Dto
 
         public string Notes { get; set; }
 
-        public enum Gender
-        {
-            Female = 1,
-            Male = 2,
-        }
+        public Gender Gender { get; set; }
 
         public ICollection<EmployeeAccountDto> EmployeeAccounts { get; set; }
 
