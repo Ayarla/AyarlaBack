@@ -14,7 +14,7 @@ namespace Ayarla.EntityFrameworkCore
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Appoinment> Appoinments { get; set; }
-        public DbSet<BusinessType> BusinessTypes { get; set; }
+        public DbSet<AccountType> BusinessTypes { get; set; }
         public DbSet<OpenCloseTime> OpenCloseTimes { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeAccount> EmployeeAccounts { get; set; }

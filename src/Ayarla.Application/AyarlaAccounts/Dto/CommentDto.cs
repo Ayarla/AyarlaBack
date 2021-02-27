@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.AyarlaUsersService
+namespace Ayarla.AyarlaAccounts.Dto
 {
     [AutoMapFrom(typeof(Comment))]
     public class CommentDto : FullAuditedEntity<Guid>
