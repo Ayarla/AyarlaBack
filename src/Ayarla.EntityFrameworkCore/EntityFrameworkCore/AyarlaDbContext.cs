@@ -10,6 +10,7 @@ namespace Ayarla.EntityFrameworkCore
     public class AyarlaDbContext : AbpZeroDbContext<Tenant, Role, User, AyarlaDbContext>
     {
         /* Define a DbSet for each entity of the application */
+        public DbSet<AccountType> AccountTypes { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Account> Accounts { get; set; }

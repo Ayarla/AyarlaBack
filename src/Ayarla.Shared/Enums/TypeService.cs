@@ -8,7 +8,7 @@ namespace Ayarla.Shared.Enums
     {
         FullTime = 1,
 
-        HalfTime = 2,
+        PartTime = 2,
 
         NoService = 3
     }
