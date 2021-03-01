@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
+using Ayarla.Shared.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -27,18 +28,18 @@ namespace Ayarla.Authorization.Accounts
 
         public int WorkingDays { get; set; }
 
-        public int LaunchTime { get; set; }
-
         public int ServiceId { get; set; }
 
         public string Notes { get; set; }
 
         public int DateId { get; set; }
 
-        public string EmployeeSex { get; set; }
+        public Gender Gender { get; set; }
 
         public int AccountId { get; set; }
 
         public int AppoinmentId { get; set; }
+
+        public int WorkTimeId { get; set; }
     }
 }

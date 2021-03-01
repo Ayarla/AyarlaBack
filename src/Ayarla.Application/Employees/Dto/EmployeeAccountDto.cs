@@ -1,16 +1,16 @@
-﻿using Abp.Domain.Entities.Auditing;
-using Ayarla.Authorization.Roles;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using Ayarla.Authorization.Accounts;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Authorization.Accounts
+namespace Ayarla.Services.Dto
 {
-    
-    public class Account : FullAuditedEntity<Guid>
+    [AutoMapFrom(typeof(EmployeeAccount))]
+    public class EmployeeAccountDto : FullAuditedEntityDto<Guid>
     {
         public string Phone1 { get; set; }
 
@@ -45,6 +45,5 @@ namespace Ayarla.Authorization.Accounts
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
-    
     }
 }

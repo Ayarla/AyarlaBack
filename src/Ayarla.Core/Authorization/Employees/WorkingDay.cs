@@ -11,8 +11,6 @@ namespace Ayarla.Authorization.Accounts
     
     public class WorkingDay : FullAuditedEntity<Guid>
     {
-       
-
         public string Days { get; set; }
     }
 }

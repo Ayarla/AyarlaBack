@@ -1,16 +1,17 @@
-﻿using Abp.Domain.Entities.Auditing;
-using Ayarla.Authorization.Roles;
+﻿using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using Ayarla.Authorization.Accounts;
+using Ayarla.Shared.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Authorization.Accounts
+namespace Ayarla.AyarlaAccounts.Dto
 {
-    
-    public class Account : FullAuditedEntity<Guid>
+    [AutoMapFrom(typeof(Account))]
+    public class AccountDto : FullAuditedEntityDto<Guid>
     {
         public string Phone1 { get; set; }
 
@@ -28,7 +29,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string AccountImage { get; set; }
 
-        public int AccountTypeId { get; set; }
+        public ICollection<AccountTypeDto> AccountTypes { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -38,13 +39,12 @@ namespace Ayarla.Authorization.Accounts
 
         public string City { get; set; }
 
-        public int CommentId { get; set; }
+        public ICollection<AccountCommentDto> Comments { get; set; }
 
-        public int OpenCloseTimeId { get; set; }
+        public ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
-    
     }
 }

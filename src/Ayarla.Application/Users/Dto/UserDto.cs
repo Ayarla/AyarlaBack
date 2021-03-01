@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Users;
 using Ayarla.AyarlaUsersService;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Ayarla.Users.Dto
 {

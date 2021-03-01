@@ -13,7 +13,7 @@ namespace Ayarla.Authorization.Users
 
         public ICollection<Favorite> Favorites { get; set; }
 
-        public int FavoriteId { get; set; }
+        
 
         public int AppoinmentId { get; set; }
 

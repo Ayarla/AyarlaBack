@@ -11,8 +11,6 @@ namespace Ayarla.Authorization.Accounts
     
     public class EmployeeAvailability : FullAuditedEntity<Guid>
     {
-        
-
-        public Boolean Availability { get; set; }
+        public bool Availability { get; set; }
     }
 }

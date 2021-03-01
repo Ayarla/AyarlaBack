@@ -19,8 +19,6 @@ namespace Ayarla.Authorization.Accounts
 
         public int UserId { get; set; }
 
-        public string Day { get; set; }
-
-        public string Time { get; set; }
+        public DateTime DayTime { get; set; }
     }
 }

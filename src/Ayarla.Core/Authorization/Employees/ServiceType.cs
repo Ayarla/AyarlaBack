@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Entities.Auditing;
 using System;
+using Ayarla.Shared.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,10 +10,8 @@ using System.Threading.Tasks;
 namespace Ayarla.Authorization.Accounts
 {
     
-    public class BusinessType : FullAuditedEntity<Guid>
+    public class ServiceType : FullAuditedEntity<Guid>
     {
-       
-
-        public string Type { get; set; }
+        public TypeService Type { get; set; }
     }
 }
