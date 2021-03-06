@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaAccounts.Dto
 {
     [AutoMapFrom(typeof(OpenCloseTime))]
-    public class OpenCloseTimeDto : FullAuditedEntityDto<Guid>
+    public class OpenCloseTimeDto 
     {
-        public int AcountId { get; set; }
+        
 
         public string DayOfTheWeek { get; set; }
 

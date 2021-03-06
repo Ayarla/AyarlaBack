@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaAccounts.Dto
 {
     [AutoMapFrom(typeof(Comment))]
-    public class AccountCommentDto : FullAuditedEntity<Guid>
+    public class AccountCommentDto 
     {
-        public int UserId { get; set; }
+        
         public string Comment { get; set; }
-        public int AccountId { get; set; }
+        
         public int Rating { get; set; }
     }
 }

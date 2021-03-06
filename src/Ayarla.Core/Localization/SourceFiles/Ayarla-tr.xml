@@ -102,5 +102,6 @@
     <text name="NewPassword">Yeni şifre</text>
     <text name="ConfirmNewPassword">Yeni şifreyi doğrula</text>
     <text name="Employee">Çalışanlar</text>
+    <text name="Accounts">Salon Sahipleri</text>
   </texts>
 </localizationDictionary>
