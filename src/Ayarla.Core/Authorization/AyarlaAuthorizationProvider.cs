@@ -13,6 +13,7 @@ namespace Ayarla.Authorization
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
             context.CreatePermission(PermissionNames.Pages_Employee, L("Employee"));
+            context.CreatePermission(PermissionNames.Pages_Accounts, L("Accounts"));
         }
 
         private static ILocalizableString L(string name)
