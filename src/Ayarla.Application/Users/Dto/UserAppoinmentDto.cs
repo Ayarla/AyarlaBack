@@ -12,7 +12,7 @@ namespace Ayarla.Users.Dto
     [AutoMapFrom(typeof(Appoinment))]
     public class UserAppoinmentDto : FullAuditedEntityDto<Guid>
     {
-        public int ServiceId { get; set; }
+        
 
         public int EmployeeId { get; set; }
 
