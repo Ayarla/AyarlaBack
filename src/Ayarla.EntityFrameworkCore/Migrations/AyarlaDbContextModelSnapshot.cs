@@ -1512,6 +1512,9 @@ namespace Ayarla.Migrations
                     b.Property<string>("EmployeeImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmployeeMail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
