@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Services
 {
-    public interface IEmployeeAppService : IAsyncCrudAppService<EmployeeDto,Guid>
+    public interface IEmployeeAppService : IAsyncCrudAppService<EmployeeDto,Guid,PagedEmployeeResultRequestDto,CreateEmployeeDto,EmployeeDto>
     {
     }
 }

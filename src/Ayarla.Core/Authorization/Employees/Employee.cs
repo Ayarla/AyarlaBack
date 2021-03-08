@@ -17,6 +17,8 @@ namespace Ayarla.Authorization.Accounts
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+        
+        public string EmployeeMail{ get; set; }  
 
         public string Password { get; set; }
 
