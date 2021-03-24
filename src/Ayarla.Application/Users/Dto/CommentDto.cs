@@ -1,16 +1,12 @@
-﻿using Abp.AutoMapper;
+﻿using System;
+using Abp.AutoMapper;
 using Abp.Domain.Entities.Auditing;
 using Ayarla.Authorization.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ayarla.AyarlaUsersService
+namespace Ayarla.Users.Dto
 {
     [AutoMapFrom(typeof(Comment))]
-    public class CommentDto : FullAuditedEntity<Guid>
+    public class CommentDto :  FullAuditedEntity<Guid>
     {
         public int UserId { get; set; }
         public string Comment { get; set; }

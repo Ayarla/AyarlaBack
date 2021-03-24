@@ -11,7 +11,7 @@ using Ayarla.Users.Dto;
 
 namespace Ayarla.AyarlaAccounts
 {
-    public interface IAyarlaAccountAppService : IAsyncCrudAppService<AccountDto,Guid,PagedAccountResultRequestDto,CreateAccountDto,AccountDto>
+    public interface IAyarlaAccountAppService : IAsyncCrudAppService<AccountDto,Guid,PagedAccountResultRequestDto>
     {
 
     }

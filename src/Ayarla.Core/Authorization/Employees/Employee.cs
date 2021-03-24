@@ -43,5 +43,7 @@ namespace Ayarla.Authorization.Accounts
         public int AppoinmentId { get; set; }
 
         public int WorkTimeId { get; set; }
+        
+        public UserType UserType { get; set; }
     }
 }

@@ -9,9 +9,10 @@ namespace Ayarla.Authorization.Users
     {
 
 
-        public ICollection<Comment> Comments { get; set; }
+        
 
-        public ICollection<Favorite> Favorites { get; set; }
+        public int CommentId { get; set; }
+        public int FavoriteId { get; set; }  
 
         
 

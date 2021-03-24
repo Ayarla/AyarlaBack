@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ using Ayarla.Authorization;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Authorization.Roles;
 using Ayarla.Authorization.Users;
+using Ayarla.AyarlaUsersService;
 using Ayarla.Roles.Dto;
 using Ayarla.Users.Dto;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +35,7 @@ namespace Ayarla.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly IRepository<Account,Guid> _account;
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -41,7 +44,8 @@ namespace Ayarla.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager,
+            IRepository<Account,Guid> account)
             : base(repository)
         {
             _userManager = userManager;
@@ -50,8 +54,15 @@ namespace Ayarla.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
+            _account = account;
         }
 
+        public async Task<CommentDto> CreateAsync(CreateCommentDto input)
+        {
+            CheckCreatePermission();
+            var comment = ObjectMapper.Map<Comment>(input);
+
+        }
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace Ayarla.Services
 {
     [AbpAuthorize(PermissionNames.Pages_Employee)]
-    public class EmployeeAppService : AsyncCrudAppService<Employee, EmployeeDto, Guid,PagedEmployeeResultRequestDto,CreateEmployeeDto,EmployeeDto>, IEmployeeAppService
+    public class EmployeeAppService : AsyncCrudAppService<Employee, EmployeeDto, Guid,PagedEmployeeResultRequestDto>, IEmployeeAppService
     {
         public EmployeeAppService(IRepository<Employee, Guid> repository) : base(repository)
         {
