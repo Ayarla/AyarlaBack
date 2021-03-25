@@ -29,7 +29,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string AccountImage { get; set; }
 
-        public int AccountTypeId { get; set; }
+        public Guid AccountTypeId { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -39,9 +39,9 @@ namespace Ayarla.Authorization.Accounts
 
         public string City { get; set; }
 
-        public int CommentId { get; set; }
+        public Guid CommentId { get; set; }
 
-        public int OpenCloseTimeId { get; set; }
+        public Guid OpenCloseTimeId { get; set; }
 
         public string Location { get; set; }
 

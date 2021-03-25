@@ -14,8 +14,9 @@ namespace Ayarla.AyarlaUsersService
     public class CreateCommentDto : FullAuditedEntity<Guid>
     {
         
+        public Guid UserId { get; set; }
         public string Comment { get; set; }
-        
+        public Guid AccountId { get; set; }
         public int Rating { get; set; }
     }
 }

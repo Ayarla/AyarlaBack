@@ -11,12 +11,12 @@ namespace Ayarla.Authorization.Users
 
         
 
-        public int CommentId { get; set; }
-        public int FavoriteId { get; set; }  
+        public Guid CommentId { get; set; }
+        public Guid FavoriteId { get; set; }  
 
         
 
-        public int AppoinmentId { get; set; }
+        public Guid AppoinmentId { get; set; }
 
         public const string DefaultPassword = "123qwe";
 

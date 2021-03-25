@@ -39,8 +39,6 @@ namespace Ayarla.AyarlaAccounts.Dto
 
         public string City { get; set; }
 
-        public ICollection<AccountCommentDto> Comments { get; set; }
-
         public ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }

@@ -9,7 +9,7 @@ namespace Ayarla.Authorization.Accounts
 {
     public class OpenCloseTime : FullAuditedEntity<Guid>
     {
-        public int AccountId { get; set; }
+        public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 
