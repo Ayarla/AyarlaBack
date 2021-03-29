@@ -36,6 +36,7 @@ namespace Ayarla.Users
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
         private readonly IRepository<Account,Guid> _accountRepository;
+        
 
         public UserAppService(
             IRepository<User, long> repository,
@@ -60,14 +61,22 @@ namespace Ayarla.Users
         public async Task<CommentDto> CreateAsync(CreateCommentDto input)
         {
             CheckCreatePermission();
+            
             var comment = ObjectMapper.Map<Comment>(input);
-            var userId = AbpSession.UserId; //giriş yapmış kullanıcı
+            
+            var userId = AbpSession.UserId; 
+            
             var account = await _accountRepository.GetAsync(input.AccountId);
             
-            //buraya comment'i kaydeden kodu yazmanız lazım bu kısmı biliyor musunuz hiç entity kaydettiniz mi ? savechanges metodu ile miydi abi evet tamamdır onu yaparız commenti return ile donmemiz gerekiyor değil mi abi
             
+
             CurrentUnitOfWork.SaveChanges();
-            return comment;
+
+            return ObjectMapper.Map<CommentDto>(comment);
+
+
+
+
         }
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
