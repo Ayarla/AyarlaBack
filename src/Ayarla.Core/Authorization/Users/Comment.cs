@@ -13,7 +13,7 @@ namespace Ayarla.Authorization.Users
     {
         
 
-        public Guid UserId { get; set; }
+        public static long? UserId { get; set; }
 
         public string UserComment { get; set; }
 

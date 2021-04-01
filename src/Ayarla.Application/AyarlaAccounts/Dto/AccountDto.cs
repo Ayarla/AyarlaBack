@@ -18,11 +18,6 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string Phone2 { get; set; }
 
         public string Phone3 { get; set; }
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
         public string Address { get { return AddressDetail + "," + District + "/" + City; } }
 
         public string AccountName { get; set; }

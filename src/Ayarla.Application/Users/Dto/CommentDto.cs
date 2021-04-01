@@ -8,7 +8,7 @@ namespace Ayarla.Users.Dto
     [AutoMapFrom(typeof(Comment))]
     public class CommentDto :  FullAuditedEntity<Guid>
     {
-        public Guid UserId { get; set; }
+        public static long? UserId { get; set; }
         public string Comment { get; set; }
         public Guid AccountId { get; set; }
         public int Rating { get; set; }

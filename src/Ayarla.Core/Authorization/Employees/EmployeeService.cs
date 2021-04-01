@@ -19,6 +19,6 @@ namespace Ayarla.Authorization.Accounts
 
         public int ServiceTime { get; set; }
 
-        public Guid TypeId { get; set; }
+        public Guid ServiceTypeId { get; set; }
     }
 }

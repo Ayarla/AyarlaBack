@@ -13,11 +13,11 @@ namespace Ayarla.Authorization.Accounts
     {
         
 
-        public int ServiceId { get; set; }
+        public Guid ServiceId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
-        public int UserId { get; set; }
+        public static long? UserId { get; set; }
 
         public DateTime DayTime { get; set; }
     }

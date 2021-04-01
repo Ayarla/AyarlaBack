@@ -36,6 +36,11 @@ namespace Ayarla.Users
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
         private readonly IRepository<Account,Guid> _accountRepository;
+        private readonly IRepository<Employee, Guid> _employeeRepository;
+        private readonly IRepository<Comment, Guid> _commentRepository;
+        private readonly IRepository<Appoinment, Guid> _appoinmentRepository;
+        private readonly IRepository<Favorite, Guid> _favoriteRepository;
+        
         
 
         public UserAppService(
@@ -46,7 +51,11 @@ namespace Ayarla.Users
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager,
-            IRepository<Account,Guid> accountRepository)
+            IRepository<Account,Guid> accountRepository,
+            IRepository<Employee,Guid> employeeRepository,
+            IRepository<Comment,Guid> commentRepository,
+            IRepository<Appoinment,Guid> appoinmentRepository,
+            IRepository<Favorite,Guid> favoriteRepository)
             : base(repository)
         {
             _userManager = userManager;
@@ -56,6 +65,43 @@ namespace Ayarla.Users
             _abpSession = abpSession;
             _logInManager = logInManager;
             _accountRepository = accountRepository;
+            _employeeRepository = employeeRepository;
+            _commentRepository = commentRepository;
+            _appoinmentRepository = appoinmentRepository;
+            _favoriteRepository = favoriteRepository;
+        }
+
+        public async Task<FavoriteDto> InsertAsync(InsertFavoriteDto input)
+        {
+            var favorite = ObjectMapper.Map<Favorite>(input);
+
+            FavoriteDto.UserId = AbpSession.UserId;
+            
+            var account = await _accountRepository.GetAsync(input.AccountId);
+            
+            await _favoriteRepository.InsertAsync(favorite);
+            
+            CurrentUnitOfWork.SaveChanges();
+            
+            return ObjectMapper.Map<FavoriteDto>(favorite);
+
+        }
+        public async Task<AppoinmentDto> CreateAsync(CreateAppoinmentDto input)
+        {
+            CheckCreatePermission();
+
+            var appoinment = ObjectMapper.Map<Appoinment>(input);
+            
+            AppoinmentDto.UserId = AbpSession.UserId;
+
+            var employee = await _employeeRepository.GetAsync(input.EmployeeId);
+
+            await _appoinmentRepository.InsertAsync(appoinment);
+            
+            CurrentUnitOfWork.SaveChanges();
+
+            return ObjectMapper.Map<AppoinmentDto>(appoinment);
+
         }
 
         public async Task<CommentDto> CreateAsync(CreateCommentDto input)
@@ -63,12 +109,12 @@ namespace Ayarla.Users
             CheckCreatePermission();
             
             var comment = ObjectMapper.Map<Comment>(input);
-            
-            var userId = AbpSession.UserId; 
+
+            CommentDto.UserId = AbpSession.UserId;
             
             var account = await _accountRepository.GetAsync(input.AccountId);
             
-            
+            await _commentRepository.InsertAsync(comment);
 
             CurrentUnitOfWork.SaveChanges();
 

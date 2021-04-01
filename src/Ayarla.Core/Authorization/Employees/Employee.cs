@@ -12,16 +12,7 @@ namespace Ayarla.Authorization.Accounts
     
     public class Employee : FullAuditedEntity<Guid>
     {
-        
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
-        
-        public string EmployeeMail{ get; set; }  
-
-        public string Password { get; set; }
-
+  
         public string Gsm { get; set; }
 
         public Guid AvailabilityId { get; set; }
@@ -44,6 +35,6 @@ namespace Ayarla.Authorization.Accounts
 
         public Guid WorkTimeId { get; set; }
         
-        public UserType UserType { get; set; }
+        
     }
 }

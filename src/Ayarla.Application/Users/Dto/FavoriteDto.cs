@@ -13,7 +13,8 @@ namespace Ayarla.AyarlaUsersService
     public class FavoriteDto : FullAuditedEntityDto<Guid>
     {
         public Guid AccountId { get; set; }
-        public Guid UserId { get; set; }
+        
+        public static long? UserId { get; set; }
 
     }
 }
