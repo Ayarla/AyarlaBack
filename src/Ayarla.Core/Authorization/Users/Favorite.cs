@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace Ayarla.Authorization.Users
 {
-    
     public class Favorite : FullAuditedEntity<Guid>
     {
-        
-
         public Guid AccountId { get; set; }
 
         public static long? UserId { get; set; }

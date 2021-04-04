@@ -12,7 +12,6 @@ namespace Ayarla.Authorization.Accounts
     
     public class Employee : FullAuditedEntity<Guid>
     {
-  
         public string Gsm { get; set; }
 
         public Guid AvailabilityId { get; set; }
@@ -34,7 +33,5 @@ namespace Ayarla.Authorization.Accounts
         public Guid AppoinmentId { get; set; }
 
         public Guid WorkTimeId { get; set; }
-        
-        
     }
 }

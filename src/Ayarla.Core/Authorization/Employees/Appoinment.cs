@@ -11,8 +11,6 @@ namespace Ayarla.Authorization.Accounts
     
     public class Appoinment : FullAuditedEntity<Guid>
     {
-        
-
         public Guid ServiceId { get; set; }
 
         public Guid EmployeeId { get; set; }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ayarla.Migrations
 {
     [DbContext(typeof(AyarlaDbContext))]
-    [Migration("20210401042218_AyarlaBack11")]
-    partial class AyarlaBack11
+    [Migration("20210404100616_AyarlaBack12")]
+    partial class AyarlaBack12
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1646,7 +1646,7 @@ namespace Ayarla.Migrations
                     b.Property<int>("ServiceTime")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("TypeId")
+                    b.Property<Guid>("ServiceTypeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
