@@ -17,16 +17,15 @@ namespace Ayarla.Comments
     
     public class CommentAppService : AsyncCrudAppService<Comment,CommentDto,Guid,PagedCommentResultRequestDto,CreateCommentDto,CommentDto>,ICommentAppService
     {
-        private readonly IAbpSession _abpSession;
+       
         private readonly IRepository<Account,Guid> _accountRepository;
         
         public CommentAppService(
             IRepository<Comment, Guid> repository,
-            IAbpSession abpSession,
             IRepository<Account,Guid> accountRepository) 
             : base(repository)
         {
-            _abpSession = abpSession;
+           
             _accountRepository = accountRepository;
         }
         
@@ -36,7 +35,7 @@ namespace Ayarla.Comments
             
             var comment = ObjectMapper.Map<Comment>(input);
 
-            CommentDto.UserId = AbpSession.UserId;
+            comment.UserId = AbpSession.UserId;
             
             var account = await _accountRepository.GetAsync(input.AccountId);
             

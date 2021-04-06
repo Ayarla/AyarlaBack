@@ -13,16 +13,15 @@ namespace Ayarla.Users.Dto
     
     public class AppoinmentAppService : AsyncCrudAppService<Appoinment,AppoinmentDto,Guid,PagedAppoinmentResultRequestDto,CreateAppoinmentDto,AppoinmentDto>,IAppoinmentAppService
     {
-        private readonly IAbpSession _abpSession;
+        
         private readonly IRepository<Employee, Guid> _employeeRepository;
         
         public AppoinmentAppService(
             IRepository<Appoinment, Guid> repository,
-            IAbpSession abpSession,
             IRepository<Employee,Guid> employeeRepository) 
             : base(repository)
         {
-            _abpSession = abpSession;
+           
             _employeeRepository = employeeRepository;
         }
         
@@ -32,7 +31,7 @@ namespace Ayarla.Users.Dto
 
             var appoinment = ObjectMapper.Map<Appoinment>(input);
             
-            AppoinmentDto.UserId = AbpSession.UserId;
+            appoinment.UserId = AbpSession.UserId;
 
             var employee = await _employeeRepository.GetAsync(input.EmployeeId);
 

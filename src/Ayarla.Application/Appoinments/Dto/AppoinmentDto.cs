@@ -16,7 +16,7 @@ namespace Ayarla.Users.Dto
 
         public Guid EmployeeId { get; set; }
 
-        public static long? UserId { get; set; }
+        public long? UserId { get; set; }
 
         public DateTime DayTime { get; set; }
         

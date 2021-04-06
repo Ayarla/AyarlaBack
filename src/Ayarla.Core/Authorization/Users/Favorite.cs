@@ -12,6 +12,6 @@ namespace Ayarla.Authorization.Users
     {
         public Guid AccountId { get; set; }
 
-        public static long? UserId { get; set; }
+        public long? UserId { get; set; }
     }
 }

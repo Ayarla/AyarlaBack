@@ -17,16 +17,15 @@ namespace Ayarla.Favorites
     
     public class FavoriteAppService : AsyncCrudAppService<Favorite,FavoriteDto,Guid,PagedFavoriteResultRequestDto,InsertFavoriteDto,FavoriteDto>,IFavoriteAppService
     {
-        private readonly IAbpSession _abpSession;
+        
         private readonly IRepository<Account,Guid> _accountRepository;
         
         public FavoriteAppService(
             IRepository<Favorite, Guid> repository,
-            IAbpSession abpSession,
             IRepository<Account,Guid> accountRepository) 
             : base(repository)
         {
-            _abpSession = abpSession;
+            
             _accountRepository = accountRepository;
         }
         
@@ -35,7 +34,7 @@ namespace Ayarla.Favorites
         {
             var favorite = ObjectMapper.Map<Favorite>(input);
 
-            FavoriteDto.UserId = AbpSession.UserId;
+            favorite.UserId = AbpSession.UserId;
             
             var account = await _accountRepository.GetAsync(input.AccountId);
             

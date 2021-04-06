@@ -14,7 +14,7 @@ namespace Ayarla.AyarlaUsersService
     {
         public Guid AccountId { get; set; }
         
-        public static long? UserId { get; set; }
+        public long? UserId { get; set; }
 
     }
 }
