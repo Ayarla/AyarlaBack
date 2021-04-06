@@ -71,59 +71,6 @@ namespace Ayarla.Users
             _favoriteRepository = favoriteRepository;
         }
 
-        public async Task<FavoriteDto> InsertAsync(InsertFavoriteDto input)
-        {
-            var favorite = ObjectMapper.Map<Favorite>(input);
-
-            FavoriteDto.UserId = AbpSession.UserId;
-            
-            var account = await _accountRepository.GetAsync(input.AccountId);
-            
-            await _favoriteRepository.InsertAsync(favorite);
-            
-            CurrentUnitOfWork.SaveChanges();
-            
-            return ObjectMapper.Map<FavoriteDto>(favorite);
-
-        }
-        public async Task<AppoinmentDto> CreateAsync(CreateAppoinmentDto input)
-        {
-            CheckCreatePermission();
-
-            var appoinment = ObjectMapper.Map<Appoinment>(input);
-            
-            AppoinmentDto.UserId = AbpSession.UserId;
-
-            var employee = await _employeeRepository.GetAsync(input.EmployeeId);
-
-            await _appoinmentRepository.InsertAsync(appoinment);
-            
-            CurrentUnitOfWork.SaveChanges();
-
-            return ObjectMapper.Map<AppoinmentDto>(appoinment);
-
-        }
-
-        public async Task<CommentDto> CreateAsync(CreateCommentDto input)
-        {
-            CheckCreatePermission();
-            
-            var comment = ObjectMapper.Map<Comment>(input);
-
-            CommentDto.UserId = AbpSession.UserId;
-            
-            var account = await _accountRepository.GetAsync(input.AccountId);
-            
-            await _commentRepository.InsertAsync(comment);
-
-            CurrentUnitOfWork.SaveChanges();
-
-            return ObjectMapper.Map<CommentDto>(comment);
-
-
-
-
-        }
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
