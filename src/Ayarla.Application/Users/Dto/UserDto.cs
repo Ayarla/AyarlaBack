@@ -45,7 +45,7 @@ namespace Ayarla.Users.Dto
 
         public ICollection<FavoriteDto> Favorites { get; set; }
 
-        public ICollection<UserAppoinmentDto> Appoinments { get; set; }
+        public ICollection<AppoinmentDto> Appoinments { get; set; }
 
     }
 }

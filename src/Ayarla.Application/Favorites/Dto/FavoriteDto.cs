@@ -12,8 +12,9 @@ namespace Ayarla.AyarlaUsersService
     [AutoMapFrom(typeof(Favorite))]
     public class FavoriteDto : FullAuditedEntityDto<Guid>
     {
-        public int AccountId { get; set; }
-        public int UserId { get; set; }
+        public Guid AccountId { get; set; }
+        
+        public long? UserId { get; set; }
 
     }
 }

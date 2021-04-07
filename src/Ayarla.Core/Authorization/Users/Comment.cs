@@ -11,13 +11,11 @@ namespace Ayarla.Authorization.Users
     
     public class Comment : FullAuditedEntity<Guid>
     {
-        
-
-        public int UserId { get; set; }
+        public long? UserId { get; set; }
 
         public string UserComment { get; set; }
 
-        public int AccountId { get; set; }
+        public Guid AccountId { get; set; }
 
         public int Rating { get; set; }
     }

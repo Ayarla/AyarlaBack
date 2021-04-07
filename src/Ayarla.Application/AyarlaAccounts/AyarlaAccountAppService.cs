@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaAccounts
 {
     [AbpAuthorize(PermissionNames.Pages_Accounts)]
-    public class AyarlaAccountAppService : AsyncCrudAppService<Account, AccountDto, Guid,PagedAccountResultRequestDto,CreateAccountDto,AccountDto>, IAyarlaAccountAppService
+    public class AyarlaAccountAppService : AsyncCrudAppService<Account, AccountDto, Guid,PagedAccountResultRequestDto>, IAyarlaAccountAppService
     {
-        public AyarlaAccountAppService(IRepository<Account, Guid> repository) : base(repository)
+        public AyarlaAccountAppService(IRepository<Account, Guid> accountRepository) : base(accountRepository)
         {
         }
     }

@@ -18,11 +18,6 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string Phone2 { get; set; }
 
         public string Phone3 { get; set; }
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-
         public string Address { get { return AddressDetail + "," + District + "/" + City; } }
 
         public string AccountName { get; set; }
@@ -38,8 +33,6 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string District { get; set; }
 
         public string City { get; set; }
-
-        public ICollection<AccountCommentDto> Comments { get; set; }
 
         public ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
 

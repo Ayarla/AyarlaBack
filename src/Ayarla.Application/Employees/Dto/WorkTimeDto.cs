@@ -12,7 +12,7 @@ namespace Ayarla.Services.Dto
     [AutoMapFrom(typeof(WorkTime))]
     public class WorkTimeDto : FullAuditedEntityDto<Guid>
     {
-        public int AcountId { get; set; }
+        public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 

@@ -4,14 +4,16 @@ using Ayarla.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ayarla.Migrations
 {
     [DbContext(typeof(AyarlaDbContext))]
-    partial class AyarlaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210308113557_AyarlaBack10")]
+    partial class AyarlaBack10
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1335,8 +1337,8 @@ namespace Ayarla.Migrations
                     b.Property<string>("AccountNotes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("AccountTypeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("AddressDetail")
                         .HasColumnType("nvarchar(max)");
@@ -1344,8 +1346,8 @@ namespace Ayarla.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1362,6 +1364,9 @@ namespace Ayarla.Migrations
                     b.Property<string>("District")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -1374,8 +1379,11 @@ namespace Ayarla.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("OpenCloseTimeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("OpenCloseTimeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone1")
                         .HasColumnType("nvarchar(max)");
@@ -1450,8 +1458,8 @@ namespace Ayarla.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmployeeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1462,8 +1470,11 @@ namespace Ayarla.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1476,14 +1487,14 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("AppoinmentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AppoinmentId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("AvailabilityId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AvailabilityId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1491,8 +1502,8 @@ namespace Ayarla.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<Guid>("DateId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("DateId")
+                        .HasColumnType("int");
 
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
@@ -1501,6 +1512,12 @@ namespace Ayarla.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployeeMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Gender")
@@ -1518,14 +1535,20 @@ namespace Ayarla.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("WorkTimeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkTimeId")
+                        .HasColumnType("int");
 
                     b.Property<int>("WorkingDays")
                         .HasColumnType("int");
@@ -1541,8 +1564,8 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1556,8 +1579,8 @@ namespace Ayarla.Migrations
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmployeeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -1644,8 +1667,8 @@ namespace Ayarla.Migrations
                     b.Property<int>("ServiceTime")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("ServiceTypeId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -1658,8 +1681,8 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<TimeSpan>("AccountWorkEndTime")
                         .HasColumnType("time");
@@ -1737,8 +1760,8 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AcountId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1890,8 +1913,8 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1920,7 +1943,15 @@ namespace Ayarla.Migrations
                     b.Property<string>("UserComment")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("UserId1")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Comments");
                 });
@@ -1931,8 +1962,8 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AccountId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
@@ -1955,7 +1986,15 @@ namespace Ayarla.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<long?>("UserId1")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Favorites");
                 });
@@ -1970,15 +2009,12 @@ namespace Ayarla.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("AppoinmentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("AppoinmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -2005,9 +2041,6 @@ namespace Ayarla.Migrations
                     b.Property<string>("EmailConfirmationCode")
                         .HasMaxLength(328)
                         .HasColumnType("nvarchar(328)");
-
-                    b.Property<Guid>("FavoriteId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2356,6 +2389,20 @@ namespace Ayarla.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("Ayarla.Authorization.Users.Comment", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId1");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Users.Favorite", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId1");
+                });
+
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
                 {
                     b.HasOne("Ayarla.Authorization.Users.User", "CreatorUser")
@@ -2463,6 +2510,10 @@ namespace Ayarla.Migrations
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
                 {
                     b.Navigation("Claims");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Favorites");
 
                     b.Navigation("Logins");
 

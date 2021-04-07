@@ -6,19 +6,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Abp.Application.Services.Dto;
 
-namespace Ayarla.AyarlaAccounts.Dto
+namespace Ayarla.AyarlaUsersService
 {
-    [AutoMapFrom(typeof(Comment))]
-    public class AccountCommentDto : FullAuditedEntityDto<Guid>
+    [AutoMapTo(typeof(Comment))]
+    
+    public class CreateCommentDto : FullAuditedEntity<Guid>
     {
-        public int UserId { get; set; }
+        
         
         public string Comment { get; set; }
+        public Guid AccountId { get; set; }
         
         public int Rating { get; set; }
-        
-        public int AccountId { get; set; }
     }
 }

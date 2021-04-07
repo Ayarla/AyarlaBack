@@ -12,7 +12,7 @@ namespace Ayarla.Services.Dto
     [AutoMapFrom(typeof(OpenCloseTime))]
     public class OpenCloseTimeDto : FullAuditedEntityDto<Guid>
     {
-        public int AcountId { get; set; }
+        public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 

@@ -9,7 +9,7 @@ namespace Ayarla.Authorization.Accounts
 {
     public class WorkTime : FullAuditedEntity<Guid>
     {
-        public int AcountId { get; set; }
+        public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 

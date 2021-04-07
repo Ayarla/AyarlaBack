@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 namespace Ayarla.Users.Dto
 {
     [AutoMapFrom(typeof(Appoinment))]
-    public class UserAppoinmentDto : FullAuditedEntityDto<Guid>
+    public class AppoinmentDto : FullAuditedEntityDto<Guid>
     {
         
 
-        public int EmployeeId { get; set; }
+        public Guid EmployeeId { get; set; }
 
-        public int UserId { get; set; }
+        public long? UserId { get; set; }
 
-        public string Day { get; set; }
-
-        public string Time { get; set; }
+        public DateTime DayTime { get; set; }
+        
+        public Guid ServiceId { get; set; }
     }
 }

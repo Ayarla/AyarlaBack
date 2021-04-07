@@ -12,8 +12,7 @@ namespace Ayarla.Authorization.Accounts
     
     public class AccountType : FullAuditedEntity<Guid>
     {
-
-
+        
         public Gender Gender { get; set; }
     }
 }
