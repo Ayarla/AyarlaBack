@@ -15,22 +15,22 @@ namespace Ayarla.Favorites
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
     
-    public class FavoriteAppService : AsyncCrudAppService<Favorite,FavoriteDto,Guid,PagedFavoriteResultRequestDto,InsertFavoriteDto,FavoriteDto>,IFavoriteAppService
+    public class FavoriteAppService : AsyncCrudAppService<Favorite,FavoriteDto,Guid,PagedFavoriteResultRequestDto,CreateFavoriteDto,FavoriteDto>,IFavoriteAppService
     {
         
         private readonly IRepository<Account,Guid> _accountRepository;
         
         public FavoriteAppService(
-            IRepository<Favorite, Guid> repository,
+            IRepository<Favorite, Guid> favoriteRepository,
             IRepository<Account,Guid> accountRepository) 
-            : base(repository)
+            : base(favoriteRepository)
         {
             
             _accountRepository = accountRepository;
         }
         
         
-        public async Task<FavoriteDto> InsertAsync(InsertFavoriteDto input)
+        public override async Task<FavoriteDto> CreateAsync(CreateFavoriteDto input)
         {
             var favorite = ObjectMapper.Map<Favorite>(input);
 

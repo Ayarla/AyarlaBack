@@ -17,9 +17,9 @@ namespace Ayarla.Users.Dto
         private readonly IRepository<Employee, Guid> _employeeRepository;
         
         public AppoinmentAppService(
-            IRepository<Appoinment, Guid> repository,
+            IRepository<Appoinment, Guid> appoinmentRepository,
             IRepository<Employee,Guid> employeeRepository) 
-            : base(repository)
+            : base(appoinmentRepository)
         {
            
             _employeeRepository = employeeRepository;

@@ -6,7 +6,7 @@ using Ayarla.Users.Dto;
 
 namespace Ayarla.Favorites
 {
-    public interface IFavoriteAppService : IAsyncCrudAppService<FavoriteDto,Guid,PagedFavoriteResultRequestDto,InsertFavoriteDto,FavoriteDto>
+    public interface IFavoriteAppService : IAsyncCrudAppService<FavoriteDto,Guid,PagedFavoriteResultRequestDto,CreateFavoriteDto,FavoriteDto>
     {
         
     }

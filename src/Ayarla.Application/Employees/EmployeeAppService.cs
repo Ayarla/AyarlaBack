@@ -15,7 +15,7 @@ namespace Ayarla.Services
     [AbpAuthorize(PermissionNames.Pages_Employee)]
     public class EmployeeAppService : AsyncCrudAppService<Employee, EmployeeDto, Guid,PagedEmployeeResultRequestDto>, IEmployeeAppService
     {
-        public EmployeeAppService(IRepository<Employee, Guid> repository) : base(repository)
+        public EmployeeAppService(IRepository<Employee, Guid> employeeRepository) : base(employeeRepository)
         {
         }
     }

@@ -21,9 +21,9 @@ namespace Ayarla.Comments
         private readonly IRepository<Account,Guid> _accountRepository;
         
         public CommentAppService(
-            IRepository<Comment, Guid> repository,
+            IRepository<Comment, Guid> commentRepository,
             IRepository<Account,Guid> accountRepository) 
-            : base(repository)
+            : base(commentRepository)
         {
            
             _accountRepository = accountRepository;
