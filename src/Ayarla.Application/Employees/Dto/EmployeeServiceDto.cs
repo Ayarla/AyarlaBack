@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
+using Ayarla.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,7 @@ namespace Ayarla.Services.Dto
         public decimal Price { get; set; }
 
         public int ServiceTime { get; set; }
+
+        public TypeService ServiceType { get; set; }
     }
 }

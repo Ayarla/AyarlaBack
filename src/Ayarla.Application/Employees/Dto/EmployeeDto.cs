@@ -29,8 +29,6 @@ namespace Ayarla.Services.Dto
 
         public ICollection<EmployeeServiceDto> EmployeeServices { get; set; }
 
-        public ICollection<ServiceTypeDto> ServiceTypes { get; set; }
-
         public ICollection<WorkingDayDto> WorkingDays { get; set; }
 
         public ICollection<WorkTimeDto> WorkTimes { get; set; }

@@ -35,11 +35,7 @@ namespace Ayarla.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-        private readonly IRepository<Account,Guid> _accountRepository;
-        private readonly IRepository<Employee, Guid> _employeeRepository;
-        private readonly IRepository<Comment, Guid> _commentRepository;
-        private readonly IRepository<Appoinment, Guid> _appoinmentRepository;
-        private readonly IRepository<Favorite, Guid> _favoriteRepository;
+    
         
         
 
@@ -50,12 +46,7 @@ namespace Ayarla.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager,
-            IRepository<Account,Guid> accountRepository,
-            IRepository<Employee,Guid> employeeRepository,
-            IRepository<Comment,Guid> commentRepository,
-            IRepository<Appoinment,Guid> appoinmentRepository,
-            IRepository<Favorite,Guid> favoriteRepository)
+            LogInManager logInManager)
             : base(repository)
         {
             _userManager = userManager;
@@ -64,11 +55,7 @@ namespace Ayarla.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
-            _accountRepository = accountRepository;
-            _employeeRepository = employeeRepository;
-            _commentRepository = commentRepository;
-            _appoinmentRepository = appoinmentRepository;
-            _favoriteRepository = favoriteRepository;
+     
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)

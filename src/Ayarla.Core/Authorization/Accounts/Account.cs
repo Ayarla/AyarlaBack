@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Abp.Domain.Entities;
+using Ayarla.Shared.Enums;
 
 namespace Ayarla.Authorization.Accounts
 {
@@ -24,7 +25,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string AccountImage { get; set; }
 
-        public Guid AccountTypeId { get; set; }
+        public Gender Gender { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -35,7 +36,8 @@ namespace Ayarla.Authorization.Accounts
         public string City { get; set; }
 
         public Guid CommentId { get; set; }
-
+        
+        [ForeignKey(nameof(OpenCloseTime))]
         public Guid OpenCloseTimeId { get; set; }
 
         public string Location { get; set; }
