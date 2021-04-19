@@ -33,11 +33,9 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string District { get; set; }
 
         public string City { get; set; }
-
-        public ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
+        
+        public virtual ICollection<OpenCloseTime> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }
-
-        public int TimePeriod { get; set; }
     }
 }

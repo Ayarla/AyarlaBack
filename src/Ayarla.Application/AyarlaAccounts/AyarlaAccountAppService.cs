@@ -6,26 +6,28 @@ using Ayarla.Authorization.Accounts;
 using Ayarla.AyarlaAccounts.Dto;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services.Dto;
-using Abp.Domain.Entities;
+using Abp.AutoMapper;
+using Abp.Modules;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ayarla.AyarlaAccounts
 {
+    [DependsOn(typeof(AbpAutoMapperModule))]
     [AbpAuthorize(PermissionNames.Pages_Accounts)]
     public class AyarlaAccountAppService : AsyncCrudAppService<Account, AccountDto, Guid,PagedAccountResultRequestDto,CreateAccountDto,AccountDto>, IAyarlaAccountAppService
     {
         private readonly IRepository<OpenCloseTime, Guid> _openclosetimeRepository;
+        private readonly IRepository<Account, Guid> _accountRepository;
         public AyarlaAccountAppService(
             IRepository<Account, Guid> accountRepository,
             IRepository<OpenCloseTime,Guid> openclosetimeRepository) 
             : base(accountRepository)
         {
             _openclosetimeRepository = openclosetimeRepository;
+            _accountRepository = accountRepository;
         }
 
         public override async Task<AccountDto> CreateAsync(CreateAccountDto input)
@@ -44,6 +46,32 @@ namespace Ayarla.AyarlaAccounts
             return ObjectMapper.Map<AccountDto>(account);
         }
 
- 
+        public async Task<PagedAccountResultDto> GetAccountWithOpenCloseTimes(PagedAccountResultRequestDto input)
+        {
+            var account = await _accountRepository.GetAll()
+                .Include(o => o.OpenCloseTimes)
+                .ToListAsync();
+
+            var accountsDto = ObjectMapper.Map<PagedAccountResultDto>(account);
+            
+
+            return accountsDto;
+
+
+        }
+        
+/*
+        public override async Task<PagedResultDto<AccountDto>> GetAllAsync(PagedAccountResultRequestDto input)
+        {
+            var account = await _accountRepository.GetAll().Include(o => o.OpenCloseTimes)
+                .Include(o=>o.District)
+                .Include(o=>o.City)
+                .Include(o =>o.AccountName)
+                .ToListAsync();
+
+            return ObjectMapper.Map<PagedResultDto<AccountDto>>(account);
+        }
+        */
+        
     }
 }

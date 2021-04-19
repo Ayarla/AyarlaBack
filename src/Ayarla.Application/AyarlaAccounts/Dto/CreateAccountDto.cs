@@ -19,7 +19,6 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string Phone2 { get; set; }
 
         public string Phone3 { get; set; }
-        
         public string Address { get { return AddressDetail + "," + District + "/" + City; } }
 
         public string AccountName { get; set; }
@@ -35,9 +34,8 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string District { get; set; }
 
         public string City { get; set; }
+        
 
         public string Location { get; set; }
-
-        public int TimePeriod { get; set; }
     }
 }

@@ -10,7 +10,9 @@ namespace Ayarla.Authorization.Accounts
 {
     public class OpenCloseTime : FullAuditedEntity<Guid>
     {
-        [ForeignKey(nameof(Account))]
+
+
+
         public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }

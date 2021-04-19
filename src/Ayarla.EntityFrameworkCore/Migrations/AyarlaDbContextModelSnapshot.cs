@@ -1341,9 +1341,6 @@ namespace Ayarla.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -1373,9 +1370,6 @@ namespace Ayarla.Migrations
 
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("OpenCloseTimeId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Phone1")
                         .HasColumnType("nvarchar(max)");
@@ -1660,6 +1654,8 @@ namespace Ayarla.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("OpenCloseTimes");
                 });
@@ -2274,6 +2270,15 @@ namespace Ayarla.Migrations
                     b.Navigation("WebhookEvent");
                 });
 
+            modelBuilder.Entity("Ayarla.Authorization.Accounts.OpenCloseTime", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Accounts.Account", null)
+                        .WithMany("OpenCloseTimes")
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Ayarla.Authorization.Roles.Role", b =>
                 {
                     b.HasOne("Ayarla.Authorization.Users.User", "CreatorUser")
@@ -2390,6 +2395,11 @@ namespace Ayarla.Migrations
             modelBuilder.Entity("Abp.Organizations.OrganizationUnit", b =>
                 {
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Accounts.Account", b =>
+                {
+                    b.Navigation("OpenCloseTimes");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Roles.Role", b =>

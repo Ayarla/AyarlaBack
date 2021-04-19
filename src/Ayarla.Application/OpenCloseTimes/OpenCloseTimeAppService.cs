@@ -34,5 +34,6 @@ namespace Ayarla.OpenCloseTimes
 
             return ObjectMapper.Map<OpenCloseTimeDto>(openclosetime);
         }
+        
     }
 }
