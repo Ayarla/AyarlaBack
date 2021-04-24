@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿/*using System.Collections.Generic;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
@@ -17,4 +17,4 @@ namespace Ayarla.AyarlaAccounts.Dto
         public virtual ICollection<OpenCloseTime> OpenCloseTimes { get; set; }
         
     }
-}
+}*/

@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using Ayarla.Authorization.Accounts;
 
 namespace Ayarla.AyarlaAccounts.Dto
@@ -7,8 +7,8 @@ namespace Ayarla.AyarlaAccounts.Dto
     public class AccountMapProfile : Profile
     {
         public AccountMapProfile()
-        {
-            CreateMap<Account, PagedAccountResultDto>();
+        {//sorulacak
+       /*     CreateMap<Account, PagedAccountResultDto>();
             CreateMap<Account, AccountDto>()
                 .ForMember(o => o.OpenCloseTimes, opt => opt.Ignore())
                 .ForMember(o => o.Gender, opt => opt.Ignore());
@@ -21,4 +21,4 @@ namespace Ayarla.AyarlaAccounts.Dto
         }
 
     }
-}
+}*/

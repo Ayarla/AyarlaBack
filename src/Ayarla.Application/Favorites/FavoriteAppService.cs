@@ -36,7 +36,7 @@ namespace Ayarla.Favorites
 
             favorite.UserId = AbpSession.UserId;
             
-            var account = await _accountRepository.GetAsync(input.AccountId);
+            await _accountRepository.GetAsync(input.AccountId);
             
             await Repository.InsertAsync(favorite);
             

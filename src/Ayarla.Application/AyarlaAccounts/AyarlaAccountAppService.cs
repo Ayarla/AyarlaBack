@@ -6,10 +6,12 @@ using Ayarla.Authorization.Accounts;
 using Ayarla.AyarlaAccounts.Dto;
 using System;
 using System.Collections.Generic;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Abp.Linq.Extensions;
 using Abp.Modules;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,18 +48,14 @@ namespace Ayarla.AyarlaAccounts
             return ObjectMapper.Map<AccountDto>(account);
         }
 
-        public async Task<PagedAccountResultDto> GetAccountWithOpenCloseTimes(PagedAccountResultRequestDto input)
+        public async Task<PagedResultDto<AccountDto>> GetAccountWithOpenCloseTimes(PagedAccountResultRequestDto input)
         {
-            var account = await _accountRepository.GetAll()
-                .Include(o => o.OpenCloseTimes)
-                .ToListAsync();
-
-            var accountsDto = ObjectMapper.Map<PagedAccountResultDto>(account);
+            var accountQuery = _accountRepository.GetAll()
+                .Include(o => o.OpenCloseTimes);
             
+            var accounts =await accountQuery.PageBy(input).ToListAsync();
 
-            return accountsDto;
-
-
+            return new PagedResultDto<AccountDto>(accountQuery.Count(), ObjectMapper.Map<List<AccountDto>>(accounts));
         }
         
 /*
