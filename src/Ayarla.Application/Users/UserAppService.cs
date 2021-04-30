@@ -35,6 +35,7 @@ namespace Ayarla.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
+        private readonly IRepository<Comment, Guid> _commentRepository;
     
         
         
@@ -46,9 +47,12 @@ namespace Ayarla.Users
             IRepository<Role> roleRepository,
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
-            LogInManager logInManager)
+            LogInManager logInManager,
+            IRepository<Comment,Guid> commentRepository)
+        
             : base(repository)
         {
+            _commentRepository = commentRepository;
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
@@ -122,6 +126,23 @@ namespace Ayarla.Users
                 entity.IsActive = false;
             });
         }
+        
+        
+        
+        
+        public async Task<PagedResultDto<CommentDto>> GetAccountWithComments (PagedUserResultRequestDto input)
+        {
+            var accountQuery = _userManager.GetAll()
+                .Include(o=>o.)
+            
+            var accounts =await accountQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<AccountDto>(accountQuery.Count(), ObjectMapper.Map<List<AccountDto>>(accounts));
+        }
+        
+        
+        
+        
 
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
