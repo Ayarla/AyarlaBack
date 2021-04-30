@@ -130,14 +130,14 @@ namespace Ayarla.Users
         
         
         
-        public async Task<PagedResultDto<CommentDto>> GetAccountWithComments (PagedUserResultRequestDto input)
+        public async Task<PagedResultDto<UserDto>> GetAccountWithComments (PagedUserResultRequestDto input)
         {
-            var accountQuery = _userManager.GetAll()
-                .Include(o=>o.)
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Comments);
             
-            var accounts =await accountQuery.PageBy(input).ToListAsync();
+            var accounts =await userQuery.PageBy(input).ToListAsync();
 
-            return new PagedResultDto<AccountDto>(accountQuery.Count(), ObjectMapper.Map<List<AccountDto>>(accounts));
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(accounts));
         }
         
         

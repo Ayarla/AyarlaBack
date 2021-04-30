@@ -61,10 +61,8 @@ namespace Ayarla.AyarlaAccounts
 /*
         public override async Task<PagedResultDto<AccountDto>> GetAllAsync(PagedAccountResultRequestDto input)
         {
-            var account = await _accountRepository.GetAll().Include(o => o.OpenCloseTimes)
-                .Include(o=>o.District)
-                .Include(o=>o.City)
-                .Include(o =>o.AccountName)
+            var account = await _accountRepository.GetAll()
+            .Include(o => o.OpenCloseTimes)
                 .ToListAsync();
 
             return ObjectMapper.Map<PagedResultDto<AccountDto>>(account);
