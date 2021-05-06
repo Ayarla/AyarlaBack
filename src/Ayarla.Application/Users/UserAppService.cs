@@ -127,23 +127,36 @@ namespace Ayarla.Users
             });
         }
         
+        public async Task<PagedResultDto<UserDto>> GetUserWithFavorites (PagedUserResultRequestDto input)
+        {
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Favorites);
+            
+            var favorites =await userQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(favorites));
+        }
         
+        public async Task<PagedResultDto<UserDto>> GetUserWithAppoinments (PagedUserResultRequestDto input)
+        {
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Appoinments);
+            
+            var appoinments =await userQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(appoinments));
+        }
         
-        
-        public async Task<PagedResultDto<UserDto>> GetAccountWithComments (PagedUserResultRequestDto input)
+        public async Task<PagedResultDto<UserDto>> GetUserWithComments (PagedUserResultRequestDto input)
         {
             var userQuery = Repository.GetAll()
                 .Include(o => o.Comments);
             
-            var accounts =await userQuery.PageBy(input).ToListAsync();
+            var comments =await userQuery.PageBy(input).ToListAsync();
 
-            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(accounts));
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(comments));
         }
         
-        
-        
-        
-
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();

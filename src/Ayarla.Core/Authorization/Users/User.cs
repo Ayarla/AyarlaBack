@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using Ayarla.Authorization.Accounts;
 
 namespace Ayarla.Authorization.Users
 {
     public class User : AbpUser<User>
     {
         public virtual ICollection<Comment> Comments { get; set; }
-         
-        public Guid FavoriteId { get; set; }  
-
-        public Guid AppoinmentId { get; set; }
+        public virtual ICollection<Appoinment> Appoinments { get; set; }
+        public virtual ICollection<Favorite> Favorites { get; set; }
 
         public const string DefaultPassword = "123qwe";
 
