@@ -30,8 +30,6 @@ namespace Ayarla.Authorization.Accounts
 
         public Guid AccountId { get; set; }
 
-        public Guid AppoinmentId { get; set; }
-
         public Guid WorkTimeId { get; set; }
     }
 }
