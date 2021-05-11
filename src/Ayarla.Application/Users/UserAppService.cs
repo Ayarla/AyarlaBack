@@ -36,6 +36,7 @@ namespace Ayarla.Users
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
         private readonly IRepository<Comment, Guid> _commentRepository;
+        private readonly IRepository<Favorite, Guid> _favoriteRepository;
     
         
         
@@ -48,7 +49,8 @@ namespace Ayarla.Users
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager,
-            IRepository<Comment,Guid> commentRepository)
+            IRepository<Comment,Guid> commentRepository,
+            IRepository<Favorite,Guid> favoriteRepository)
         
             : base(repository)
         {
@@ -59,7 +61,8 @@ namespace Ayarla.Users
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
-     
+            _favoriteRepository = favoriteRepository;
+
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
@@ -126,7 +129,7 @@ namespace Ayarla.Users
                 entity.IsActive = false;
             });
         }
-        
+      /*  
         public async Task<PagedResultDto<UserDto>> GetUserWithFavorites (PagedUserResultRequestDto input)
         {
             var userQuery = Repository.GetAll()
@@ -136,8 +139,11 @@ namespace Ayarla.Users
 
             return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(favorites));
         }
-        
-        public async Task<PagedResultDto<UserDto>> GetUserWithAppoinments (PagedUserResultRequestDto input)
+        */
+
+ 
+
+      public async Task<PagedResultDto<UserDto>> GetUserWithAppoinments (PagedUserResultRequestDto input)
         {
             var userQuery = Repository.GetAll()
                 .Include(o => o.Appoinments);

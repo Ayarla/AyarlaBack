@@ -38,6 +38,8 @@ namespace Ayarla.Comments
 
             comment.UserId = AbpSession.UserId;
 
+            await _accountRepository.GetAsync(input.AccountId);
+
             await Repository.InsertAsync(comment);
 
             CurrentUnitOfWork.SaveChanges();
