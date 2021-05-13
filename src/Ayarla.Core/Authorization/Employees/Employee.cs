@@ -18,7 +18,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string EmployeeImage { get; set; }
 
-        public int WorkingDays { get; set; }
+        public Days WorkingDays { get; set; }
 
         public Guid ServiceId { get; set; }
 

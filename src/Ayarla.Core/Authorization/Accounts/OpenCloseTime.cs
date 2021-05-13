@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ayarla.Shared.Enums;
 
 namespace Ayarla.Authorization.Accounts
 {
@@ -15,7 +16,7 @@ namespace Ayarla.Authorization.Accounts
 
         public Guid AccountId { get; set; }
 
-        public string DayOfTheWeek { get; set; }
+        public Days Days { get; set; }
 
         public TimeSpan AccountWorkStartTime { get; set; }
 

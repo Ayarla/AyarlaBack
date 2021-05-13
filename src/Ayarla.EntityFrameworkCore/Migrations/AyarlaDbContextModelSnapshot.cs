@@ -1429,6 +1429,8 @@ namespace Ayarla.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Appoinments");
                 });
 
@@ -1439,9 +1441,6 @@ namespace Ayarla.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AppoinmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("AvailabilityId")
@@ -1635,8 +1634,8 @@ namespace Ayarla.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("DayOfTheWeek")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
 
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
@@ -1666,23 +1665,23 @@ namespace Ayarla.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AccountId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("DayOfTheWeek")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
 
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EmployeeId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<TimeSpan>("EmployeeWorkEndTime")
                         .HasColumnType("time");
@@ -1854,6 +1853,8 @@ namespace Ayarla.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
                 });
 
@@ -1892,6 +1893,8 @@ namespace Ayarla.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Favorites");
                 });
 
@@ -1905,15 +1908,9 @@ namespace Ayarla.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("AppoinmentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("AuthenticationSource")
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
-
-                    b.Property<Guid>("CommentId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1940,9 +1937,6 @@ namespace Ayarla.Migrations
                     b.Property<string>("EmailConfirmationCode")
                         .HasMaxLength(328)
                         .HasColumnType("nvarchar(328)");
-
-                    b.Property<Guid>("FavoriteId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2270,6 +2264,13 @@ namespace Ayarla.Migrations
                     b.Navigation("WebhookEvent");
                 });
 
+            modelBuilder.Entity("Ayarla.Authorization.Accounts.Appoinment", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Appoinments")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Ayarla.Authorization.Accounts.OpenCloseTime", b =>
                 {
                     b.HasOne("Ayarla.Authorization.Accounts.Account", null)
@@ -2298,6 +2299,20 @@ namespace Ayarla.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Users.Comment", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Users.Favorite", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
@@ -2411,7 +2426,13 @@ namespace Ayarla.Migrations
 
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
                 {
+                    b.Navigation("Appoinments");
+
                     b.Navigation("Claims");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Favorites");
 
                     b.Navigation("Logins");
 
