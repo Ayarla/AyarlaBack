@@ -19,8 +19,7 @@ namespace Ayarla.EntityFrameworkCore
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeAccount> EmployeeAccounts { get; set; }
         public DbSet<EmployeeAvailability> EmployeeAvailabilities { get; set; }
-        public DbSet<EmployeeService> EmployeeServices { get; set; }    
-        public DbSet<WorkingDay> WorkingDays { get; set; }
+        public DbSet<EmployeeService> EmployeeServices { get; set; }
         public DbSet<WorkTime> WorkTimes { get; set; }
         public AyarlaDbContext(DbContextOptions<AyarlaDbContext> options)
             : base(options)

@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.Linq.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ayarla.Services
 {
@@ -17,6 +20,17 @@ namespace Ayarla.Services
     {
         public EmployeeAppService(IRepository<Employee, Guid> employeeRepository) : base(employeeRepository)
         {
+        }
+
+        public async Task<PagedResultDto<EmployeeDto>> GetAllEmployees(PagedEmployeeResultRequestDto input)
+        {
+            var employeeQuery = Repository.GetAll()
+                .Include(o => o.EmployeeServices);
+
+            var employees = await employeeQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<EmployeeDto>(employeeQuery.Count(),
+                ObjectMapper.Map<List<EmployeeDto>>(employees));
         }
     }
 }

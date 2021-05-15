@@ -4,14 +4,16 @@ using Ayarla.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ayarla.Migrations
 {
     [DbContext(typeof(AyarlaDbContext))]
-    partial class AyarlaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210515144608_AyarlaBack17")]
+    partial class AyarlaBack17
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1477,6 +1479,12 @@ namespace Ayarla.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("WorkTimeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("WorkingDays")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
@@ -1662,6 +1670,9 @@ namespace Ayarla.Migrations
                     b.Property<long?>("CreatorUserId")
                         .HasColumnType("bigint");
 
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
                     b.Property<long?>("DeleterUserId")
                         .HasColumnType("bigint");
 
@@ -1686,14 +1697,44 @@ namespace Ayarla.Migrations
                     b.Property<long?>("LastModifierUserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("WorkingDays")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
+
+                    b.ToTable("WorkTimes");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Accounts.WorkingDay", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Days")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("WorkTimes");
+                    b.ToTable("WorkingDays");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Roles.Role", b =>
@@ -2236,15 +2277,6 @@ namespace Ayarla.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Ayarla.Authorization.Accounts.WorkTime", b =>
-                {
-                    b.HasOne("Ayarla.Authorization.Accounts.Employee", null)
-                        .WithMany("WorkTimes")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Ayarla.Authorization.Roles.Role", b =>
                 {
                     b.HasOne("Ayarla.Authorization.Users.User", "CreatorUser")
@@ -2371,8 +2403,6 @@ namespace Ayarla.Migrations
             modelBuilder.Entity("Ayarla.Authorization.Accounts.Employee", b =>
                 {
                     b.Navigation("EmployeeServices");
-
-                    b.Navigation("WorkTimes");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Roles.Role", b =>

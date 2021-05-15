@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ayarla.Shared.Enums;
 
 namespace Ayarla.Services.Dto
 {
@@ -14,7 +15,7 @@ namespace Ayarla.Services.Dto
     {
         public Guid AccountId { get; set; }
 
-        public string DayOfTheWeek { get; set; }
+        public Days WorkingDays { get; set; }
 
         public TimeSpan EmployeeWorkStartTime { get; set; }
 

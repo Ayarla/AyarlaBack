@@ -12,7 +12,7 @@ namespace Ayarla.Authorization.Accounts
     {
         public Guid EmployeeId { get; set; }
 
-        public Days Days { get; set; }
+        public Days WorkingDays { get; set; }
 
         public TimeSpan EmployeeWorkStartTime { get; set; }
 

@@ -18,9 +18,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string EmployeeImage { get; set; }
 
-        public Days WorkingDays { get; set; }
-
-        public Guid ServiceId { get; set; }
+        public virtual ICollection<EmployeeService> EmployeeServices{ get; set; }
 
         public string Notes { get; set; }
 
@@ -28,8 +26,6 @@ namespace Ayarla.Authorization.Accounts
 
         public Gender Gender { get; set; }
 
-        public Guid AccountId { get; set; }
-
-        public Guid WorkTimeId { get; set; }
+        public virtual ICollection<WorkTime> WorkTimes { get; set; }
     }
 }
