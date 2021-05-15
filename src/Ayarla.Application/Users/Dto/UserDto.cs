@@ -42,11 +42,6 @@ namespace Ayarla.Users.Dto
 
         public string Password { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-
-        public virtual ICollection<Favorite> Favorites { get; set; }
-
-        public virtual ICollection<Appoinment> Appoinments { get; set; }
 
     }
 }

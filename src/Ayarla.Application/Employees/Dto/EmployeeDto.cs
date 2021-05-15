@@ -12,7 +12,7 @@ using Ayarla.Users.Dto;
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(Employee))]
-    public class EmployeeDto : FullAuditedEntityDto<Guid>
+    public class EmployeeDto : EntityDto<Guid>
     {
 
         public string Gsm { get; set; }

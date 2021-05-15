@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaAccounts.Dto
 {
     [AutoMapFrom(typeof(Account))]
-    public class AccountDto : FullAuditedEntityDto<Guid>
+    public class AccountDto : EntityDto<Guid>
     {
         public string Phone1 { get; set; }
 

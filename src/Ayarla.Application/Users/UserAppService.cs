@@ -141,7 +141,7 @@ namespace Ayarla.Users
         }
         */
 
- 
+ /*
 
       public async Task<PagedResultDto<UserDto>> GetUserWithAppoinments (PagedUserResultRequestDto input)
         {
@@ -162,6 +162,7 @@ namespace Ayarla.Users
 
             return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(comments));
         }
+        */
         
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {

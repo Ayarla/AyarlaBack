@@ -8,6 +8,8 @@ namespace Ayarla.Shared.Enums
     {
         Male = 1,
 
-        Female = 2
+        Female = 2,
+        
+        Unisex = 3
     }
 }

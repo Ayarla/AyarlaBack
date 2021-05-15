@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(WorkingDay))]
-    public class WorkingDayDto : FullAuditedEntityDto<Guid>
+    public class WorkingDayDto : EntityDto<Guid>
     {
         public string Days { get; set; }
     }

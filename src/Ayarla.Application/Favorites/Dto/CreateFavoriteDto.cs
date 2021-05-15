@@ -6,7 +6,7 @@ using Ayarla.Authorization.Users;
 namespace Ayarla.Users.Dto
 {
     [AutoMapTo(typeof(Favorite))]
-    public class CreateFavoriteDto : FullAuditedEntityDto<Guid>
+    public class CreateFavoriteDto
     {
         public Guid AccountId { get; set; }
     }

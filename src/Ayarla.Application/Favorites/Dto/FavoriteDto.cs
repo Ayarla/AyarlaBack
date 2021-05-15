@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaUsersService
 {
     [AutoMapFrom(typeof(Favorite))]
-    public class FavoriteDto : FullAuditedEntityDto<Guid>
+    public class FavoriteDto : EntityDto<Guid>
     {
         public Guid AccountId { get; set; }
         

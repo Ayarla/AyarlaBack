@@ -12,7 +12,7 @@ namespace Ayarla.AyarlaUsersService
 {
     [AutoMapTo(typeof(Comment))]
     
-    public class CreateCommentDto : FullAuditedEntityDto<Guid>
+    public class CreateCommentDto 
     {
         
         

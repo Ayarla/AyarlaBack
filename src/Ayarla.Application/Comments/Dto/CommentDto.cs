@@ -7,7 +7,7 @@ using Ayarla.Authorization.Users;
 namespace Ayarla.Users.Dto
 {
     [AutoMapFrom(typeof(Comment))]
-    public class CommentDto :  FullAuditedEntityDto<Guid>
+    public class CommentDto :  EntityDto<Guid>
     {
         public long? UserId { get; set; }
         public string Comment { get; set; }

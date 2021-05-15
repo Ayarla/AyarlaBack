@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(WorkTime))]
-    public class WorkTimeDto : FullAuditedEntityDto<Guid>
+    public class WorkTimeDto : EntityDto<Guid>
     {
         public Guid AccountId { get; set; }
 

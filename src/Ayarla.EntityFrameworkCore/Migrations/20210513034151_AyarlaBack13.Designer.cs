@@ -4,14 +4,16 @@ using Ayarla.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Ayarla.Migrations
 {
     [DbContext(typeof(AyarlaDbContext))]
-    partial class AyarlaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210513034151_AyarlaBack13")]
+    partial class AyarlaBack13
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1429,6 +1431,8 @@ namespace Ayarla.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Appoinments");
                 });
 
@@ -1851,6 +1855,8 @@ namespace Ayarla.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Comments");
                 });
 
@@ -1888,6 +1894,8 @@ namespace Ayarla.Migrations
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Favorites");
                 });
@@ -2258,6 +2266,13 @@ namespace Ayarla.Migrations
                     b.Navigation("WebhookEvent");
                 });
 
+            modelBuilder.Entity("Ayarla.Authorization.Accounts.Appoinment", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Appoinments")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Ayarla.Authorization.Accounts.OpenCloseTime", b =>
                 {
                     b.HasOne("Ayarla.Authorization.Accounts.Account", null)
@@ -2286,6 +2301,20 @@ namespace Ayarla.Migrations
                     b.Navigation("DeleterUser");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Users.Comment", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Comments")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Ayarla.Authorization.Users.Favorite", b =>
+                {
+                    b.HasOne("Ayarla.Authorization.Users.User", null)
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
@@ -2399,7 +2428,13 @@ namespace Ayarla.Migrations
 
             modelBuilder.Entity("Ayarla.Authorization.Users.User", b =>
                 {
+                    b.Navigation("Appoinments");
+
                     b.Navigation("Claims");
+
+                    b.Navigation("Comments");
+
+                    b.Navigation("Favorites");
 
                     b.Navigation("Logins");
 
