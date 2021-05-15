@@ -25,9 +25,10 @@ namespace Ayarla.Services
         public async Task<PagedResultDto<EmployeeDto>> GetAllEmployees(PagedEmployeeResultRequestDto input)
         {
             var employeeQuery = Repository.GetAll()
-                .Include(o => o.EmployeeServices);
+                .Include(o => o.EmployeeServices)
+                .Include(o => o.WorkTimes);
 
-            var employees = await employeeQuery.PageBy(input).ToListAsync();
+                var employees = await employeeQuery.PageBy(input).ToListAsync();
 
             return new PagedResultDto<EmployeeDto>(employeeQuery.Count(),
                 ObjectMapper.Map<List<EmployeeDto>>(employees));
