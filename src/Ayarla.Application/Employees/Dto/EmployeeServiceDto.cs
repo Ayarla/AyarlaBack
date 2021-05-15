@@ -3,16 +3,14 @@ using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Shared.Enums;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(EmployeeService))]
     public class EmployeeServiceDto : EntityDto<Guid>
     {
+        public Guid EmployeeId { get; set; }
+        
         public string Service { get; set; }
 
         public decimal Price { get; set; }

@@ -12,7 +12,7 @@ namespace Ayarla.Authorization.Accounts
     
     public class EmployeeService : FullAuditedEntity<Guid>
     {
-        
+        public Guid EmployeeId { get; set; }
 
         public string Service { get; set; }
 
