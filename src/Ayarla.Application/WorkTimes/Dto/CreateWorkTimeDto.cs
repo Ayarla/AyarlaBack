@@ -1,8 +1,11 @@
 ﻿using System;
+using Abp.AutoMapper;
+using Ayarla.Authorization.Accounts;
 using Ayarla.Shared.Enums;
 
 namespace Ayarla.Services.Dto
 {
+    [AutoMapTo(typeof(WorkTime))]
     public class CreateWorkTimeDto
     {
         public Guid EmployeeId { get; set; }

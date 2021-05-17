@@ -7,7 +7,6 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Abp.Runtime.Session;
 using Ayarla.Authorization;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Authorization.Users;
@@ -55,10 +54,9 @@ namespace Ayarla.Favorites
 
         public async Task<PagedResultDto<FavoriteDto>> GetAllFavorite(PagedFavoriteResultRequestDto input)
         {
-            var userId = AbpSession.UserId;
-            
+ 
             var favoriteQuery = Repository.GetAll()
-                .Where(o => o.UserId == userId);
+                .Where(o => o.UserId == AbpSession.UserId);
 
             var favorite = await favoriteQuery.PageBy(input).ToListAsync();
 

@@ -1,10 +1,10 @@
-﻿using Abp.Application.Services.Dto;
+﻿using System;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Shared.Enums;
-using System;
 
-namespace Ayarla.Services.Dto
+namespace Ayarla.EmployeeServices.Dto
 {
     [AutoMapFrom(typeof(EmployeeService))]
     public class EmployeeServiceDto : EntityDto<Guid>

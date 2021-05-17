@@ -37,9 +37,7 @@ namespace Ayarla.AyarlaAccounts
             CheckCreatePermission();
             var account = ObjectMapper.Map<Account>(input);
 
-            var accountId = SequentialGuidGenerator.Instance.Create();
-
-            account.Id = accountId;
+            account.Id = SequentialGuidGenerator.Instance.Create();
 
             await Repository.InsertAndGetIdAsync(account);
 
@@ -58,16 +56,6 @@ namespace Ayarla.AyarlaAccounts
             return new PagedResultDto<AccountDto>(accountQuery.Count(), ObjectMapper.Map<List<AccountDto>>(accounts));
         }
         
-/*
-        public override async Task<PagedResultDto<AccountDto>> GetAllAsync(PagedAccountResultRequestDto input)
-        {
-            var account = await _accountRepository.GetAll()
-            .Include(o => o.OpenCloseTimes)
-                .ToListAsync();
-
-            return ObjectMapper.Map<PagedResultDto<AccountDto>>(account);
-        }
-        */
         
     }
 }

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Ayarla.Authorization.Accounts;
+using Ayarla.EmployeeServices.Dto;
 using Ayarla.Services.Dto;
 
 namespace Ayarla.EmployeeServices

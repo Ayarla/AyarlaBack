@@ -7,12 +7,13 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
-using Abp.Runtime.Session;
+using Ayarla.Appoinments.Dto;
 using Ayarla.Authorization;
 using Ayarla.Authorization.Accounts;
+using Ayarla.Users.Dto;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ayarla.Users.Dto
+namespace Ayarla.Appoinments
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
     
@@ -50,10 +51,9 @@ namespace Ayarla.Users.Dto
 
         public async Task<PagedResultDto<AppoinmentDto>> GetAllAppoinments(PagedAppoinmentResultRequestDto input)
         {
-            var userId = AbpSession.UserId;
 
             var appoinmentQuery = Repository.GetAll()
-                .Where(o => o.UserId == userId);
+                .Where(o => o.UserId == AbpSession.UserId);
 
             var appoinment = await appoinmentQuery.PageBy(input).ToListAsync();
 

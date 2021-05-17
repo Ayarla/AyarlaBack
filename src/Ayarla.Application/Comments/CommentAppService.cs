@@ -46,6 +46,6 @@ namespace Ayarla.Comments
 
             return ObjectMapper.Map<CommentDto>(comment);
 
-        }//acount kullanılacak
+        }
     }
 }

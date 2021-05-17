@@ -4,6 +4,7 @@ using Abp.Application.Services;
 using Abp.Domain.Repositories;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Services.Dto;
+using Ayarla.WorkTimes.Dto;
 
 namespace Ayarla.WorkTimes
 {

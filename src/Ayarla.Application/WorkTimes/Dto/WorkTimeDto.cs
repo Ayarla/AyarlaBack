@@ -1,14 +1,10 @@
-﻿using Abp.Application.Services.Dto;
+﻿using System;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Ayarla.Shared.Enums;
 
-namespace Ayarla.Services.Dto
+namespace Ayarla.WorkTimes.Dto
 {
     [AutoMapFrom(typeof(WorkTime))]
     public class WorkTimeDto : EntityDto<Guid>
