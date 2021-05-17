@@ -6,12 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
 
 namespace Ayarla.AyarlaUsersService
 {
     [AutoMapTo(typeof(Comment))]
     
-    public class CreateCommentDto : FullAuditedEntity<Guid>
+    public class CreateCommentDto 
     {
         
         

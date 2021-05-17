@@ -1,13 +1,12 @@
 ﻿using System;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Abp.Domain.Entities.Auditing;
 using Ayarla.Authorization.Users;
 
-namespace Ayarla.Users.Dto
+namespace Ayarla.Comments.Dto
 {
     [AutoMapFrom(typeof(Comment))]
-    public class CommentDto :  FullAuditedEntityDto<Guid>
+    public class CommentDto :  EntityDto<Guid>
     {
         public long? UserId { get; set; }
         public string Comment { get; set; }

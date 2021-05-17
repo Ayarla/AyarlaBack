@@ -1,5 +1,6 @@
 ﻿using System;
 using Abp.Application.Services;
+using Ayarla.Appoinments.Dto;
 
 namespace Ayarla.Users.Dto
 {

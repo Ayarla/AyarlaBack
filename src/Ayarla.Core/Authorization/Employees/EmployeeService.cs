@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Entities.Auditing;
+using Ayarla.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,7 +12,7 @@ namespace Ayarla.Authorization.Accounts
     
     public class EmployeeService : FullAuditedEntity<Guid>
     {
-        
+        public Guid EmployeeId { get; set; }
 
         public string Service { get; set; }
 
@@ -19,6 +20,6 @@ namespace Ayarla.Authorization.Accounts
 
         public int ServiceTime { get; set; }
 
-        public Guid ServiceTypeId { get; set; }
+        public TypeService ServiceType { get; set; }
     }
 }

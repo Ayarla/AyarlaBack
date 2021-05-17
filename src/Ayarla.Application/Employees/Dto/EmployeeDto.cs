@@ -12,28 +12,23 @@ using Ayarla.Users.Dto;
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(Employee))]
-    public class EmployeeDto : FullAuditedEntityDto<Guid>
+    public class EmployeeDto : EntityDto<Guid>
     {
 
         public string Gsm { get; set; }
 
+        public Guid AvailabilityId { get; set; }
+
         public string EmployeeImage { get; set; }
+        
+        public virtual ICollection<EmployeeService> EmployeeServices{ get; set; }
 
         public string Notes { get; set; }
 
+        public Guid DateId { get; set; }
+
         public Gender Gender { get; set; }
 
-        public ICollection<EmployeeAccountDto> EmployeeAccounts { get; set; }
-
-        public ICollection<EmployeeAvailabilityDto> EmployeeAvailabilities { get; set; }
-
-        public ICollection<EmployeeServiceDto> EmployeeServices { get; set; }
-
-        public ICollection<ServiceTypeDto> ServiceTypes { get; set; }
-
-        public ICollection<WorkingDayDto> WorkingDays { get; set; }
-
-        public ICollection<WorkTimeDto> WorkTimes { get; set; }
-
+        public virtual ICollection<WorkTime> WorkTimes { get; set; }
     }
 }

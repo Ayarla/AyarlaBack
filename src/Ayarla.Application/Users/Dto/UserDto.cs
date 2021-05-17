@@ -6,6 +6,7 @@ using Ayarla.AyarlaUsersService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Ayarla.Authorization.Accounts;
 
 namespace Ayarla.Users.Dto
 {
@@ -41,11 +42,6 @@ namespace Ayarla.Users.Dto
 
         public string Password { get; set; }
 
-        public ICollection<CommentDto> Comments { get; set; }
-
-        public ICollection<FavoriteDto> Favorites { get; set; }
-
-        public ICollection<AppoinmentDto> Appoinments { get; set; }
 
     }
 }

@@ -3,21 +3,23 @@ using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ayarla.Services.Dto
+namespace Ayarla.AyarlaAccounts.Dto
 {
-    [AutoMapFrom(typeof(WorkTime))]
-    public class WorkTimeDto : FullAuditedEntityDto<Guid>
+    [AutoMapFrom(typeof(OpenCloseTime))]
+    public class OpenCloseTimeDto :EntityDto<Guid>
     {
+        
         public Guid AccountId { get; set; }
 
         public string DayOfTheWeek { get; set; }
 
-        public TimeSpan EmployeeWorkStartTime { get; set; }
+        public TimeSpan AccountWorkStartTime { get; set; }
 
-        public TimeSpan EmployeeWorkEndTime { get; set; }
+        public TimeSpan AccountWorkEndTime { get; set; }
     }
 }

@@ -35,11 +35,9 @@ namespace Ayarla.Users
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IAbpSession _abpSession;
         private readonly LogInManager _logInManager;
-        private readonly IRepository<Account,Guid> _accountRepository;
-        private readonly IRepository<Employee, Guid> _employeeRepository;
         private readonly IRepository<Comment, Guid> _commentRepository;
-        private readonly IRepository<Appoinment, Guid> _appoinmentRepository;
         private readonly IRepository<Favorite, Guid> _favoriteRepository;
+    
         
         
 
@@ -51,24 +49,20 @@ namespace Ayarla.Users
             IPasswordHasher<User> passwordHasher,
             IAbpSession abpSession,
             LogInManager logInManager,
-            IRepository<Account,Guid> accountRepository,
-            IRepository<Employee,Guid> employeeRepository,
             IRepository<Comment,Guid> commentRepository,
-            IRepository<Appoinment,Guid> appoinmentRepository,
             IRepository<Favorite,Guid> favoriteRepository)
+        
             : base(repository)
         {
+            _commentRepository = commentRepository;
             _userManager = userManager;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
             _passwordHasher = passwordHasher;
             _abpSession = abpSession;
             _logInManager = logInManager;
-            _accountRepository = accountRepository;
-            _employeeRepository = employeeRepository;
-            _commentRepository = commentRepository;
-            _appoinmentRepository = appoinmentRepository;
             _favoriteRepository = favoriteRepository;
+
         }
 
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
@@ -135,7 +129,41 @@ namespace Ayarla.Users
                 entity.IsActive = false;
             });
         }
+      /*  
+        public async Task<PagedResultDto<UserDto>> GetUserWithFavorites (PagedUserResultRequestDto input)
+        {
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Favorites);
+            
+            var favorites =await userQuery.PageBy(input).ToListAsync();
 
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(favorites));
+        }
+        */
+
+ /*
+
+      public async Task<PagedResultDto<UserDto>> GetUserWithAppoinments (PagedUserResultRequestDto input)
+        {
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Appoinments);
+            
+            var appoinments =await userQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(appoinments));
+        }
+        
+        public async Task<PagedResultDto<UserDto>> GetUserWithComments (PagedUserResultRequestDto input)
+        {
+            var userQuery = Repository.GetAll()
+                .Include(o => o.Comments);
+            
+            var comments =await userQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<UserDto>(userQuery.Count(), ObjectMapper.Map<List<UserDto>>(comments));
+        }
+        */
+        
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
             var roles = await _roleRepository.GetAllListAsync();

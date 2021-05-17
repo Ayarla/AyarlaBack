@@ -7,6 +7,7 @@ using Abp.Runtime.Session;
 using Ayarla.Authorization;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Authorization.Users;
+using Ayarla.AyarlaAccounts.Dto;
 using Ayarla.AyarlaUsersService;
 using Ayarla.Comments.Dto;
 using Ayarla.Users.Dto;
@@ -36,9 +37,9 @@ namespace Ayarla.Comments
             var comment = ObjectMapper.Map<Comment>(input);
 
             comment.UserId = AbpSession.UserId;
-            
-            var account = await _accountRepository.GetAsync(input.AccountId);
-            
+
+            await _accountRepository.GetAsync(input.AccountId);
+
             await Repository.InsertAsync(comment);
 
             CurrentUnitOfWork.SaveChanges();

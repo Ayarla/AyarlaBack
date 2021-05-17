@@ -103,5 +103,17 @@
     <text name="ConfirmNewPassword">Yeni şifreyi doğrula</text>
     <text name="Employee">Çalışanlar</text>
     <text name="Accounts">Salon Sahipleri</text>
+    <text name="Monday">Pazartesi</text>
+    <text name="Tuesday">Salı</text>
+    <text name="Wednesday">Çarşamba</text>
+    <text name="Thursday">Perşembe</text>
+    <text name="Friday">Cuma</text>
+    <text name="Saturday">Cumartesi</text>
+    <text name="Sunday">Pazar</text>
+    <text name="Male">Erkek</text>
+    <text name="Female">Kadın</text>
+    <text name="FullTime">Tam Gün</text>
+    <text name="PartTime">Yarım Gün</text>
+    
   </texts>
 </localizationDictionary>

@@ -1,20 +1,22 @@
-﻿using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
-using Ayarla.Authorization.Accounts;
+﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ayarla.Shared.Enums;
 
-namespace Ayarla.Services.Dto
+namespace Ayarla.Authorization.Accounts
 {
-    [AutoMapFrom(typeof(OpenCloseTime))]
-    public class OpenCloseTimeDto : FullAuditedEntityDto<Guid>
+    public class OpenCloseTime : FullAuditedEntity<Guid>
     {
+
+
+
         public Guid AccountId { get; set; }
 
-        public string DayOfTheWeek { get; set; }
+        public Days Days { get; set; }
 
         public TimeSpan AccountWorkStartTime { get; set; }
 

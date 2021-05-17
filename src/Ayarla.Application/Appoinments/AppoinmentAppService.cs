@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
-using Abp.Runtime.Session;
+using Abp.Linq.Extensions;
+using Ayarla.Appoinments.Dto;
 using Ayarla.Authorization;
 using Ayarla.Authorization.Accounts;
+using Ayarla.Users.Dto;
+using Microsoft.EntityFrameworkCore;
 
-namespace Ayarla.Users.Dto
+namespace Ayarla.Appoinments
 {
     [AbpAuthorize(PermissionNames.Pages_Users)]
     
@@ -33,7 +39,7 @@ namespace Ayarla.Users.Dto
             
             appoinment.UserId = AbpSession.UserId;
 
-            var employee = await _employeeRepository.GetAsync(input.EmployeeId);
+            await _employeeRepository.GetAsync(input.EmployeeId);
 
             await Repository.InsertAsync(appoinment);
             
@@ -41,6 +47,18 @@ namespace Ayarla.Users.Dto
 
             return ObjectMapper.Map<AppoinmentDto>(appoinment);
 
+        }
+
+        public async Task<PagedResultDto<AppoinmentDto>> GetAllAppoinments(PagedAppoinmentResultRequestDto input)
+        {
+
+            var appoinmentQuery = Repository.GetAll()
+                .Where(o => o.UserId == AbpSession.UserId);
+
+            var appoinment = await appoinmentQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<AppoinmentDto>(appoinmentQuery.Count(),
+                ObjectMapper.Map<List<AppoinmentDto>>(appoinment));
         }
     }
 }

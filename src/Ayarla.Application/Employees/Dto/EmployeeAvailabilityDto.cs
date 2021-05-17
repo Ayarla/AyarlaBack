@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Ayarla.Services.Dto
 {
     [AutoMapFrom(typeof(EmployeeAvailability))]
-    public class EmployeeAvailabilityDto : FullAuditedEntityDto<Guid>
+    public class EmployeeAvailabilityDto : EntityDto<Guid>
     {
         public bool Availability { get; set; }
     }

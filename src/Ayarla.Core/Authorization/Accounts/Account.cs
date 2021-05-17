@@ -1,16 +1,13 @@
 ﻿using Abp.Domain.Entities.Auditing;
-using Ayarla.Authorization.Roles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Abp.Domain.Entities;
+using Ayarla.Shared.Enums;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Ayarla.Authorization.Accounts
 {
-    
+
     public class Account : FullAuditedEntity<Guid>
     {
         public string Phone1 { get; set; }
@@ -24,7 +21,7 @@ namespace Ayarla.Authorization.Accounts
 
         public string AccountImage { get; set; }
 
-        public Guid AccountTypeId { get; set; }
+        public Gender Gender { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -33,10 +30,8 @@ namespace Ayarla.Authorization.Accounts
         public string District { get; set; }
 
         public string City { get; set; }
-
-        public Guid CommentId { get; set; }
-
-        public Guid OpenCloseTimeId { get; set; }
+        
+        public virtual ICollection<OpenCloseTime> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }
 

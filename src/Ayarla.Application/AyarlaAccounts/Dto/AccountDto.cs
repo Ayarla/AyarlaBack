@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Ayarla.AyarlaAccounts.Dto
 {
     [AutoMapFrom(typeof(Account))]
-    public class AccountDto : FullAuditedEntityDto<Guid>
+    public class AccountDto : EntityDto<Guid>
     {
         public string Phone1 { get; set; }
 
@@ -24,7 +24,7 @@ namespace Ayarla.AyarlaAccounts.Dto
 
         public string AccountImage { get; set; }
 
-        public ICollection<AccountTypeDto> AccountTypes { get; set; }
+        public Gender Gender { get; set; }
 
         public string AccountNotes { get; set; }
 
@@ -33,11 +33,9 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string District { get; set; }
 
         public string City { get; set; }
-
-        public ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
+        
+        public virtual ICollection<OpenCloseTime> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }
-
-        public int TimePeriod { get; set; }
     }
 }
