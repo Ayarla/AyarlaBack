@@ -34,6 +34,6 @@ jobs:
       with:
         app-name: AyarlaWebHost2021041011510
         slot-name: Production
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6947170119FD41EAA908423B919AB11D }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_63180866C61043108A78A5DD16FB6C12 }}
         package: ${{env.DOTNET_ROOT}}/myapp
 
