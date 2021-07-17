@@ -46,3 +46,12 @@ jobs:
       with:
         name: .net-app
 
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'AyarlaWebHost20210410115100'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c07b8c55e83143e98c77f79cc39a54e6 }}
+        package: .  
+
