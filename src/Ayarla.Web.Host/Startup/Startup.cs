@@ -16,6 +16,7 @@ using Ayarla.Identity;
 using Abp.AspNetCore.SignalR.Hubs;
 using Abp.Dependency;
 using Abp.Json;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 
@@ -23,9 +24,9 @@ namespace Ayarla.Web.Host.Startup
 {
     public class Startup
     {
-        private const string _defaultCorsPolicyName = "localhost";
+        private const string DefaultCorsPolicyName = "localhost";
 
-        private const string _apiVersion = "v1";
+        private const string ApiVersion = "v1";
 
         private readonly IConfigurationRoot _appConfiguration;
 
@@ -49,7 +50,18 @@ namespace Ayarla.Web.Host.Startup
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
             });
-
+            
+            services.AddCors(options =>
+        {
+            options.AddDefaultPolicy(
+                builder =>
+                {
+                    builder.WithOrigins("https://example.net",
+                                        "https://www.contoso.net");
+                });
+        });
+        services.AddControllers();
+    
 
 
             IdentityRegistrar.Register(services);
@@ -60,7 +72,7 @@ namespace Ayarla.Web.Host.Startup
             // Configure CORS for angular2 UI
             services.AddCors(
                 options => options.AddPolicy(
-                    _defaultCorsPolicyName,
+                    DefaultCorsPolicyName,
                     builder => builder
                         .WithOrigins(
                             // App:CorsOrigins in appsettings.json can contain more than one address separated by comma.
@@ -78,9 +90,9 @@ namespace Ayarla.Web.Host.Startup
             // Swagger - Enable this line and the related lines in Configure method to enable swagger UI
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc(_apiVersion, new OpenApiInfo
+                options.SwaggerDoc(ApiVersion, new OpenApiInfo
                 {
-                    Version = _apiVersion,
+                    Version = ApiVersion,
                     Title = "Ayarla API",
                     Description = "Ayarla",
                     // uncomment if needed TermsOfService = new Uri("https://example.com/terms"),
@@ -115,29 +127,58 @@ namespace Ayarla.Web.Host.Startup
                     f => f.UseAbpLog4Net().WithConfig("log4net.config")
                 )
             );
+            
+            
         }
 
-        public void Configure(IApplicationBuilder app,  ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app,  ILoggerFactory loggerFactory, IWebHostEnvironment env)
         {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            //
             app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
-
-            app.UseCors(_defaultCorsPolicyName); // Enable CORS!
+            //
+            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
-
+            
             app.UseRouting();
-
-            app.UseAuthentication();
-
+            
+            app.UseCors(DefaultCorsPolicyName); // Enable CORS!
+            
+            app.UseAuthorization();
+            
             app.UseAbpRequestLocalization();
-
-          
+            
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapHub<AbpCommonHub>("/signalr");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
             });
+            
+           // app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
+
+            //app.UseCors(_defaultCorsPolicyName); // Enable CORS!
+
+            //app.UseStaticFiles();
+
+            //app.UseRouting();
+
+           // app.UseAuthentication();
+
+            //app.UseAbpRequestLocalization();
+
+          
+           /* app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<AbpCommonHub>("/signalr");
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
+            });*/
 
             // Enable middleware to serve generated Swagger as a JSON endpoint
             app.UseSwagger(c => { c.RouteTemplate = "swagger/{documentName}/swagger.json"; });
@@ -146,7 +187,7 @@ namespace Ayarla.Web.Host.Startup
             app.UseSwaggerUI(options =>
             {
                 // specifying the Swagger JSON endpoint.
-                options.SwaggerEndpoint($"/swagger/{_apiVersion}/swagger.json", $"Ayarla API {_apiVersion}");
+                options.SwaggerEndpoint($"/swagger/{ApiVersion}/swagger.json", $"Ayarla API {ApiVersion}");
                 options.IndexStream = () => Assembly.GetExecutingAssembly()
                     .GetManifestResourceStream("Ayarla.Web.Host.wwwroot.swagger.ui.index.html");
                 options.DisplayRequestDuration(); // Controls the display of the request duration (in milliseconds) for "Try it out" requests.  

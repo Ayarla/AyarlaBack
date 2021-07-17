@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ayarla.Web.Host.Controllers
 {
-    public class AntiForgeryController : AyarlaControllerBase
+    public class  AntiForgeryController : AyarlaControllerBase
     {
         private readonly IAntiforgery _antiforgery;
         private readonly IAbpAntiForgeryManager _antiForgeryManager;
