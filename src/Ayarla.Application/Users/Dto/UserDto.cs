@@ -41,6 +41,8 @@ namespace Ayarla.Users.Dto
         public string[] RoleNames { get; set; }
 
         public string Password { get; set; }
+        
+        public string İmage { get; set; }
 
 
     }

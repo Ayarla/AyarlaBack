@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ayarla.EmployeeServices.Dto;
 using Ayarla.Users.Dto;
+using Ayarla.WorkTimes.Dto;
 
 namespace Ayarla.Services.Dto
 {
@@ -21,7 +23,7 @@ namespace Ayarla.Services.Dto
 
         public string EmployeeImage { get; set; }
         
-        public virtual ICollection<EmployeeService> EmployeeServices{ get; set; }
+        public virtual ICollection<EmployeeServiceDto> EmployeeServices{ get; set; }
 
         public string Notes { get; set; }
 
@@ -29,6 +31,6 @@ namespace Ayarla.Services.Dto
 
         public Gender Gender { get; set; }
 
-        public virtual ICollection<WorkTime> WorkTimes { get; set; }
+        public virtual ICollection<WorkTimeDto> WorkTimes { get; set; }
     }
 }

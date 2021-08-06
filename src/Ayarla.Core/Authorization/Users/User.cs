@@ -8,7 +8,7 @@ namespace Ayarla.Authorization.Users
 {
     public class User : AbpUser<User>
     {
-
+        public string İmage { get; set; }
 
         public const string DefaultPassword = "123qwe";
 

@@ -30,6 +30,8 @@ namespace Ayarla.Users.Dto
         public bool IsActive { get; set; }
 
         public string[] RoleNames { get; set; }
+        
+        public string İmage { get; set; }
 
         [Required]
         [StringLength(AbpUserBase.MaxPlainPasswordLength)]
