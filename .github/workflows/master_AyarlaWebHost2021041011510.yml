@@ -53,5 +53,5 @@ jobs:
       with:
         app-name: 'AyarlaWebHost2021041011510'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6e68e953947649628ab4f1a462fd03af }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f5bfe956a7d24bf6a0269a286d599726 }}
         package: .
