@@ -12,8 +12,6 @@ namespace Ayarla.Authorization.Accounts
     public class OpenCloseTime : FullAuditedEntity<Guid>
     {
 
-
-
         public Guid AccountId { get; set; }
 
         public Days Days { get; set; }
