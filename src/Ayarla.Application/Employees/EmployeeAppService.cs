@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp;
 using Abp.Application.Services.Dto;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,24 @@ namespace Ayarla.Services
     {
         public EmployeeAppService(IRepository<Employee, Guid> employeeRepository) : base(employeeRepository)
         {
+        }
+
+
+        public override async Task<EmployeeDto> CreateAsync(CreateEmployeeDto input)
+        {
+           CheckCreatePermission();
+
+           var employee = ObjectMapper.Map<Employee>(input);
+
+           employee.Id = SequentialGuidGenerator.Instance.Create();
+
+           employee.UserId = AbpSession.UserId;
+           
+           await Repository.InsertAndGetIdAsync(employee);
+           
+           CurrentUnitOfWork.SaveChanges();
+
+           return ObjectMapper.Map<EmployeeDto>(employee);
         }
 
         public async Task<PagedResultDto<EmployeeDto>> GetAllEmployees(PagedEmployeeResultRequestDto input)

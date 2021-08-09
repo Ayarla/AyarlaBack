@@ -16,6 +16,7 @@ namespace Ayarla.Services.Dto
     [AutoMapFrom(typeof(Employee))]
     public class EmployeeDto : EntityDto<Guid>
     {
+        public long? UserId { get; set; }
 
         public string Gsm { get; set; }
 

@@ -39,6 +39,8 @@ namespace Ayarla.AyarlaAccounts
 
             account.Id = SequentialGuidGenerator.Instance.Create();
 
+            account.UserId = AbpSession.UserId;
+
             await Repository.InsertAndGetIdAsync(account);
 
             CurrentUnitOfWork.SaveChanges();

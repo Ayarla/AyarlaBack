@@ -7,6 +7,8 @@ namespace Ayarla.Services.Dto
     [AutoMapTo(typeof(Employee))]
     public class CreateEmployeeDto
     {
+        public long? UserId { get; set; }
+        
         public string Gsm { get; set; }
 
         public string EmployeeImage { get; set; }

@@ -12,6 +12,8 @@ namespace Ayarla.Authorization.Accounts
     
     public class Employee : FullAuditedEntity<Guid>
     {
+        public long? UserId { get; set; }
+        
         public string Gsm { get; set; }
 
         public Guid AvailabilityId { get; set; }
