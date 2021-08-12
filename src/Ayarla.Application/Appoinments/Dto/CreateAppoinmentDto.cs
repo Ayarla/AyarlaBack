@@ -6,7 +6,7 @@ using Ayarla.Authorization.Accounts;
 namespace Ayarla.Users.Dto
 {
     [AutoMapTo(typeof(Appoinment))]
-    public class CreateAppoinmentDto : FullAuditedEntityDto<Guid>
+    public class CreateAppoinmentDto
     {
         public Guid EmployeeId { get; set; }
 

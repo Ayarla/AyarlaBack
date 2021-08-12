@@ -6,7 +6,7 @@ using Ayarla.Authorization.Accounts;
 namespace Ayarla.Appoinments.Dto
 {
     [AutoMapFrom(typeof(Appoinment))]
-    public class AppoinmentDto : FullAuditedEntityDto<Guid>
+    public class AppoinmentDto : EntityDto<Guid>
     {
         
 

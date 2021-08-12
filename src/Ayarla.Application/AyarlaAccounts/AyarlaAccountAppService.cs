@@ -48,7 +48,7 @@ namespace Ayarla.AyarlaAccounts
             return ObjectMapper.Map<AccountDto>(account);
         }
 
-        public async Task<PagedResultDto<AccountDto>> GetAllAccounts(PagedAccountResultRequestDto input)
+        public override async Task<PagedResultDto<AccountDto>> GetAllAsync(PagedAccountResultRequestDto input)
         {
             var accountQuery = _accountRepository.GetAll()
                 .Include(o => o.OpenCloseTimes);

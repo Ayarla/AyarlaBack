@@ -48,10 +48,21 @@ namespace Ayarla.Appoinments
             return ObjectMapper.Map<AppoinmentDto>(appoinment);
 
         }
-
+/*
         public async Task<PagedResultDto<AppoinmentDto>> GetAllAppoinments(PagedAppoinmentResultRequestDto input)
         {
 
+            var appoinmentQuery = Repository.GetAll()
+                .Where(o => o.UserId == AbpSession.UserId);
+
+            var appoinment = await appoinmentQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<AppoinmentDto>(appoinmentQuery.Count(),
+                ObjectMapper.Map<List<AppoinmentDto>>(appoinment));
+        }
+*/
+        public override async Task<PagedResultDto<AppoinmentDto>> GetAllAsync(PagedAppoinmentResultRequestDto input)
+        {
             var appoinmentQuery = Repository.GetAll()
                 .Where(o => o.UserId == AbpSession.UserId);
 
