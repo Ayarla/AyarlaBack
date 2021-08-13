@@ -41,5 +41,7 @@ namespace Ayarla.AyarlaAccounts.Dto
         public string Location { get; set; }
         
         public int CommentNumber { get; set; }
+        
+        public decimal MeanRating { get; set; }
     }
 }

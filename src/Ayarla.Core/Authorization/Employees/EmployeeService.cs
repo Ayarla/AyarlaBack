@@ -21,5 +21,7 @@ namespace Ayarla.Authorization.Accounts
         public int ServiceTime { get; set; }
 
         public TypeService ServiceType { get; set; }
+
+        public DateTime DateTime { get; set; }
     }
 }

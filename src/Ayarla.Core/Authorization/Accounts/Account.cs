@@ -40,6 +40,8 @@ namespace Ayarla.Authorization.Accounts
         public int TimePeriod { get; set; }
         
         public int CommentNumber { get; set; }
+
+        public decimal MeanRating { get; set; }
     
     }
 }

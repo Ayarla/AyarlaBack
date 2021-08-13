@@ -72,10 +72,22 @@ namespace Ayarla.AyarlaAccounts
 
             account.CommentNumber = _commentRepository.GetAll()
                 .Count(o => o.AccountId == account.Id);
-
-
+            
             return ObjectMapper.Map<AccountDto>(account);
 
         }
+
+        /*
+        public async Task<AccountDto> GetAllRatingsAsync(AccountDto input)
+        {
+            var account = ObjectMapper.Map<AccountDto>(input);
+
+            var comment = await _commentRepository.GetAll()
+                .Where(o => o.AccountId == account.Id).ToListAsync();
+
+            
+
+
+        }*/
     }
 }
