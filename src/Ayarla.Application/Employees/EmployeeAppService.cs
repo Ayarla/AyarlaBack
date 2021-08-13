@@ -41,13 +41,25 @@ namespace Ayarla.Services
            return ObjectMapper.Map<EmployeeDto>(employee);
         }
 
-        public async Task<PagedResultDto<EmployeeDto>> GetAllEmployees(PagedEmployeeResultRequestDto input)
+        /*public async Task<PagedResultDto<EmployeeDto>> GetAllEmployees(PagedEmployeeResultRequestDto input)
         {
             var employeeQuery = Repository.GetAll()
                 .Include(o => o.EmployeeServices)
                 .Include(o => o.WorkTimes);
 
                 var employees = await employeeQuery.PageBy(input).ToListAsync();
+
+            return new PagedResultDto<EmployeeDto>(employeeQuery.Count(),
+                ObjectMapper.Map<List<EmployeeDto>>(employees));
+        }*/
+
+        public async Task<PagedResultDto<EmployeeDto>> GetAllAsync(PagedEmployeeResultRequestDto input)
+        {
+            var employeeQuery = Repository.GetAll()
+                .Include(o => o.EmployeeServices)
+                .Include(o => o.WorkTimes);
+
+            var employees = await employeeQuery.PageBy(input).ToListAsync();
 
             return new PagedResultDto<EmployeeDto>(employeeQuery.Count(),
                 ObjectMapper.Map<List<EmployeeDto>>(employees));
