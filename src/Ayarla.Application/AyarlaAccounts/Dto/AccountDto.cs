@@ -39,5 +39,7 @@ namespace Ayarla.AyarlaAccounts.Dto
         public virtual ICollection<OpenCloseTimeDto> OpenCloseTimes { get; set; }
 
         public string Location { get; set; }
+        
+        public int CommentNumber { get; set; }
     }
 }

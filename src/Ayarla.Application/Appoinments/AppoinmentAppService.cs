@@ -21,14 +21,17 @@ namespace Ayarla.Appoinments
     {
         
         private readonly IRepository<Employee, Guid> _employeeRepository;
+        private readonly IRepository<EmployeeService, Guid> _employeeServicesRepository;
         
         public AppoinmentAppService(
             IRepository<Appoinment, Guid> appoinmentRepository,
-            IRepository<Employee,Guid> employeeRepository) 
+            IRepository<Employee,Guid> employeeRepository,
+            IRepository<EmployeeService,Guid> employeeServicesRepository) 
             : base(appoinmentRepository)
         {
            
             _employeeRepository = employeeRepository;
+            _employeeServicesRepository = employeeServicesRepository;
         }
         
         public override async Task<AppoinmentDto> CreateAsync(CreateAppoinmentDto input)
@@ -40,6 +43,27 @@ namespace Ayarla.Appoinments
             appoinment.UserId = AbpSession.UserId;
 
             await _employeeRepository.GetAsync(input.EmployeeId);
+
+            /*
+            _employeeServicesRepository.GetAll()
+                .GroupBy(o => o.EmployeeId)
+                .Select(t => new
+                {
+                    TotalPrice = t.Sum(ta => ta.Price),
+                    Services = t.ToList()
+                });
+                */
+            
+            
+                
+            appoinment.Services =_employeeServicesRepository.GetAll()
+                .Where(o => o.EmployeeId == input.EmployeeId).ToList();
+            
+            appoinment.TotalPrice = _employeeServicesRepository.GetAll()
+                .Where(o => o.EmployeeId == input.EmployeeId).Select(o => o.Price).Sum();
+                
+                
+
 
             await Repository.InsertAsync(appoinment);
             

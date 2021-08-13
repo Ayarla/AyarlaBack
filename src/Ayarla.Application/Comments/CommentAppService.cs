@@ -37,6 +37,8 @@ namespace Ayarla.Comments
             var comment = ObjectMapper.Map<Comment>(input);
 
             comment.UserId = AbpSession.UserId;
+            
+            comment.CreationTime = DateTime.Now;
 
             await _accountRepository.GetAsync(input.AccountId);
 

@@ -18,5 +18,9 @@ namespace Ayarla.Authorization.Users
         public Guid AccountId { get; set; }
 
         public int Rating { get; set; }
+
+        public int Like { get; set; }
+
+        public int Dislike { get; set; }
     }
 }

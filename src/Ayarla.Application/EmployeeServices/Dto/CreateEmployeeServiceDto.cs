@@ -10,7 +10,7 @@ namespace Ayarla.Services.Dto
     {
                 public Guid EmployeeId { get; set; }
         
-                public string Service { get; set; }
+                public string ServiceName { get; set; }
         
                 public decimal Price { get; set; }
         

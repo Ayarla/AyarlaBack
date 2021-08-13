@@ -38,6 +38,8 @@ namespace Ayarla.Authorization.Accounts
         public string Location { get; set; }
 
         public int TimePeriod { get; set; }
+        
+        public int CommentNumber { get; set; }
     
     }
 }

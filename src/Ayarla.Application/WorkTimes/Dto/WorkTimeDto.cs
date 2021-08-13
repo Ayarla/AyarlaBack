@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Ayarla.Authorization.Accounts;
@@ -11,7 +12,7 @@ namespace Ayarla.WorkTimes.Dto
     {
         public Guid EmployeeId { get; set; }
 
-        public Days WorkingDays { get; set; }
+        public List<Days> WorkingDays { get; set; }
 
         public TimeSpan EmployeeWorkStartTime { get; set; }
 
