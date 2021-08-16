@@ -52,7 +52,7 @@ namespace Ayarla.Favorites
 
         }
 
-        public async Task<PagedResultDto<FavoriteDto>> GetAllFavorite(PagedFavoriteResultRequestDto input)
+        public override async Task<PagedResultDto<FavoriteDto>> GetAllAsync(PagedFavoriteResultRequestDto input)
         {
  
             var favoriteQuery = Repository.GetAll()

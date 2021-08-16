@@ -10,6 +10,8 @@ namespace Ayarla.Users.Dto
     [AutoMapTo(typeof(Appoinment))]
     public class CreateAppoinmentDto
     {
+        public long? UserId { get; set; }
+        
         public Guid AccountId { get; set; }
         public Guid EmployeeId { get; set; }
 

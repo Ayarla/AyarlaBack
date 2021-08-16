@@ -17,7 +17,7 @@ namespace Ayarla.AyarlaUsersService
 
         public long? UserId { get; set; }
         
-        public string Comment { get; set; }
+        public string UserComment { get; set; }
         public Guid AccountId { get; set; }
         
         public int Rating { get; set; }

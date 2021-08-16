@@ -17,5 +17,7 @@ namespace Ayarla.Services.Dto
                 public int ServiceTime { get; set; }
         
                 public TypeService ServiceType { get; set; }
+                
+               
     }
 }

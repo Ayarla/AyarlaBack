@@ -10,7 +10,7 @@ namespace Ayarla.Comments.Dto
     {
         public long? UserId { get; set; }
         
-        public string Comment { get; set; }
+        public string UserComment { get; set; }
         
         public Guid AccountId { get; set; }
         

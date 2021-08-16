@@ -95,5 +95,14 @@ namespace Ayarla.Appoinments
             return new PagedResultDto<AppoinmentDto>(appoinmentQuery.Count(),
                 ObjectMapper.Map<List<AppoinmentDto>>(appoinment));
         }
+
+        public async override Task<AppoinmentDto> UpdateAsync(AppoinmentDto input)
+        {
+            var updatedappoinment = await Repository.UpdateAsync(ObjectMapper.Map<Appoinment>(input));
+            
+            CurrentUnitOfWork.SaveChanges();
+            
+            return ObjectMapper.Map<AppoinmentDto>(updatedappoinment);
+        }
     }
 }

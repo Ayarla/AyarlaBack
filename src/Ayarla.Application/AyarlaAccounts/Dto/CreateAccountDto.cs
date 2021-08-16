@@ -39,5 +39,7 @@ namespace Ayarla.AyarlaAccounts.Dto
         
 
         public string Location { get; set; }
+        
+
     }
 }
