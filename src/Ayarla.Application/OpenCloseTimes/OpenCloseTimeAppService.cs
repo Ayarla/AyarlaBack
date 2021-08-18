@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Ayarla.Authorization.Accounts;
 using Ayarla.AyarlaAccounts.Dto;
@@ -34,6 +35,14 @@ namespace Ayarla.OpenCloseTimes
 
             return ObjectMapper.Map<OpenCloseTimeDto>(openclosetime);
         }
-        
+
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var openCloseTime = await Repository.GetAsync(input.Id);
+
+            await Repository.DeleteAsync(openCloseTime);
+        }
     }
 }

@@ -53,6 +53,16 @@ namespace Ayarla.Services
                 ObjectMapper.Map<List<EmployeeDto>>(employees));
         }
 
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var employee = await Repository.GetAsync(input.Id);
+            
+            await Repository.DeleteAsync(employee);
+        }
+
+
         /*
         public async Task<PagedResultDto<EmployeeDto>> GetAllAsync(PagedEmployeeResultRequestDto input)
         {

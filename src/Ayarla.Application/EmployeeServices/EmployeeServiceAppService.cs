@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Ayarla.Authorization.Accounts;
 using Ayarla.EmployeeServices.Dto;
@@ -34,8 +35,15 @@ namespace Ayarla.EmployeeServices
 
             return ObjectMapper.Map<EmployeeServiceDto>(employeeservice);
 
+        }
 
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var employeeService = await Repository.GetAsync(input.Id);
 
+            await Repository.DeleteAsync(employeeService);
         }
     }
 }

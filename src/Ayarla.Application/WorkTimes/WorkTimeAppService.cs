@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Ayarla.Authorization.Accounts;
 using Ayarla.Services.Dto;
@@ -33,6 +34,15 @@ namespace Ayarla.WorkTimes
             CurrentUnitOfWork.SaveChanges();
 
             return ObjectMapper.Map<WorkTimeDto>(worktime);
+        }
+
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var workTime = await Repository.GetAsync(input.Id);
+
+            await Repository.DeleteAsync(workTime);
         }
     }
 }

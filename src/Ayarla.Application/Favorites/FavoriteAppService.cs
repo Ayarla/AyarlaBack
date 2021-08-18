@@ -63,5 +63,14 @@ namespace Ayarla.Favorites
             return new PagedResultDto<FavoriteDto>(favoriteQuery.Count(),
                 ObjectMapper.Map<List<FavoriteDto>>(favorite));
         }
+
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var favorite = await Repository.GetAsync(input.Id);
+
+            await Repository.DeleteAsync(favorite);
+        }
     }
 }

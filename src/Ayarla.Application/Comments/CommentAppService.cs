@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.Domain.Repositories;
 using Abp.Runtime.Session;
@@ -47,6 +48,16 @@ namespace Ayarla.Comments
             CurrentUnitOfWork.SaveChanges();
 
             return ObjectMapper.Map<CommentDto>(comment);
+
+        }
+
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var comment = await Repository.GetAsync(input.Id);
+
+            await Repository.DeleteAsync(comment);
 
         }
     }

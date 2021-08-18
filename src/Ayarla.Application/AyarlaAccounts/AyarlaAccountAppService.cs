@@ -77,6 +77,15 @@ namespace Ayarla.AyarlaAccounts
 
         }
 
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var account = await _accountRepository.GetAsync(input.Id);
+
+            await _accountRepository.DeleteAsync(account);
+        }
+
         /*
         public async Task<AccountDto> GetAllRatingsAsync(AccountDto input)
         {

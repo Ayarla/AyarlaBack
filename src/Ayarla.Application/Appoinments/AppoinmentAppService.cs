@@ -96,13 +96,22 @@ namespace Ayarla.Appoinments
                 ObjectMapper.Map<List<AppoinmentDto>>(appoinment));
         }
 
-        public async override Task<AppoinmentDto> UpdateAsync(AppoinmentDto input)
+        public override async Task<AppoinmentDto> UpdateAsync(AppoinmentDto input)
         {
             var updatedappoinment = await Repository.UpdateAsync(ObjectMapper.Map<Appoinment>(input));
             
             CurrentUnitOfWork.SaveChanges();
             
             return ObjectMapper.Map<AppoinmentDto>(updatedappoinment);
+        }
+
+        public override async Task DeleteAsync(EntityDto<Guid> input)
+        {
+            CheckDeletePermission();
+            
+            var appoinment = await Repository.GetAsync(input.Id);
+
+            await Repository.DeleteAsync(appoinment);
         }
     }
 }
